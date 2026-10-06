@@ -386,9 +386,123 @@ body {
 }
 
 @keyframes popIn {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
+
+.app-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid transparent;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2;
+}
+
+.nav-btn.active {
+    border-color: var(--js-yellow);
+    color: var(--js-yellow);
+}
+
+.playground-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    height: calc(100vh - 120px);
+}
+
+.playground-sidebar {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #E0E0E0;
+    overflow-y: auto;
+}
+
+.playground-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.playground-list li {
+    padding: 10px;
+    background: var(--light-grey);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.playground-list li:hover, .playground-list li.active {
+    background: var(--js-yellow);
+    color: var(--js-black);
+}
+
+.playground-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.editor-header {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+}
+
+.pg-data-preview {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--light-grey);
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.editor-body textarea {
+    width: 100%;
+    height: 150px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    resize: none;
+}
+
+.editor-body textarea:focus {
+    outline: 2px solid var(--js-yellow);
+}
+
+.console-output {
+    background: #111;
+    color: #0f0;
+    font-family: monospace;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 100px;
+}
+
+.console-error { color: #ff5555; }
+.console-success { color: #55ff55; }
 
 @media (max-width: 600px) {
     .app-header {
@@ -450,5 +564,7 @@ body {
     .action-footer {
         margin-bottom: 30px;
     }
+
+    .playground-layout { grid-template-columns: 1fr; height: auto; }
 
 }

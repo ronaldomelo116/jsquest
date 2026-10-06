@@ -2,65 +2,69 @@
 
 ![Preview do Projeto](https://via.placeholder.com/1200x600?text=JS+Quest+-+Aprenda+JavaScript+Jogando)
 
-Uma aplicação front-end gamificada inspirada em plataformas educacionais modernas (como Duolingo e Mimo). O **JS Quest** foi desenvolvido para testar e aprimorar conhecimentos em JavaScript, abordando desde os fundamentos até simulações de projetos reais de mercado, como sistemas de delivery, agregadores de web rádio e painéis de estoque.
+Uma aplicação web gamificada inspirada em plataformas educacionais modernas (como Duolingo e Mimo). O **JS Quest** foi desenvolvido para testar e aprimorar conhecimentos em JavaScript, abordando desde os fundamentos da linguagem até simulações de projetos reais de mercado (sistemas de delivery, controle de estoque, integrações de APIs e muito mais).
+
+---
 
 ## 🚀 Funcionalidades
 
-* **Trilha de Aprendizado Modular:** 15 módulos progressivos que são desbloqueados linearmente conforme o avanço do usuário.
-* **Simulação de API (Fetch API):** O currículo e as perguntas são consumidos assincronamente a partir de um arquivo JSON externo, preparando a arquitetura para futuras integrações com back-ends reais.
-* **Feedback Imediato:** Validação de respostas em tempo real com explicações técnicas detalhadas para fixação do aprendizado.
-* **Mini-Projetos Visuais (HTML5 Canvas):** Integração com a API Canvas para renderização de gráficos dinâmicos (Dashboards) que reagem aos acertos do usuário.
-* **Persistência de Dados (LocalStorage):** O progresso (XP e módulos concluídos) é salvo de forma segura no navegador do usuário, permitindo continuar de onde parou sem necessidade de banco de dados.
-* **Design Responsivo e Humanizado:** Interface limpa, cores inspiradas na identidade visual oficial do JavaScript e foco na experiência do usuário (UX/UI).
+* **🗺️ Trilha de Aprendizado Modular:** Módulos progressivos desbloqueados sequencialmente conforme o avanço e pontuação do usuário.
+* **🛡️ Backend Serverless Seguro (Vercel Functions):**
+  * `api/modulos`: Higieniza e entrega as missões sem expor gabaritos ou explicações ao cliente.
+  * `api/verificar`: Endpoint `POST` que valida as respostas diretamente no servidor, impedindo que o aluno descubra a resposta inspecionando o código no navegador.
+* **🧪 Playground de Código Interativo:**
+  * Aba dedicada para praticar métodos essenciais de array (`.map()`, `.filter()`, `.reduce()`).
+  * Execução dinâmica de código com `new Function()`, tratamento amigável de erros de sintaxe e comparação automática entre o resultado retornado e o esperado.
+* **📊 Mini-Projetos Visuais (HTML5 Canvas):** Renderização de dashboards e gráficos dinâmicos via Context2D que reagem em tempo real ao desempenho do jogador.
+* **💾 Persistência de Progresso (LocalStorage):** Pontuação de XP e módulos concluídos são armazenados localmente no navegador.
+* **📱 PWA (Progressive Web App):** Service Worker configurado para cache de recursos essenciais e suporte a funcionamento offline.
+* **🔊 Feedback Sonoro & Visual:** Efeitos sonoros para cliques, acertos, erros e conclusão de fases, acompanhados de modais explicativos.
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-Este projeto foi construído puramente com tecnologias nativas, sem a utilização de frameworks, focando na proficiência em manipulação de DOM e lógica de programação:
+* **HTML5:** Estrutura semântica, acessibilidade e views desacopladas (Dashboard, Exercícios e Playground).
+* **CSS3:** Design responsivo (Flexbox e CSS Grid), animações customizadas e paleta inspirada no ecossistema JavaScript.
+* **JavaScript (ES6+ Vanilla):** Manipulação de DOM, execução segura em sandbox, controle de áudio, estados e consumo assíncrono de APIs (`async/await`, `fetch`).
+* **HTML5 Canvas API:** Desenho de gráficos vetoriais para mini-projetos.
+* **Vercel Serverless Functions:** Arquitetura de micro-serviços serverless em Node.js para regras de negócio e validação segura.
+* **Service Workers (PWA):** Cache offline e recursos de aplicação web progressiva.
+* **Bootstrap Icons:** Biblioteca de ícones vetoriais.
 
-* **HTML5:** Semântica e estrutura de dados.
-* **CSS3:** Estilização, animações (`@keyframes`), variáveis CSS e layout responsivo (Flexbox/Grid).
-* **JavaScript (Vanilla):** Manipulação de DOM, Event Listeners, Promises/Async Await, ES Modules e LocalStorage.
-* **HTML5 Context2D (Canvas):** Renderização de gráficos visuais dinâmicos.
-* **Bootstrap Icons:** Biblioteca de ícones.
-* **Google Fonts (Nunito):** Tipografia moderna e legível.
+---
 
 ## 📂 Estrutura de Arquivos
 
 ```text
 /
-├── index.html       # Estrutura principal da aplicação e views (Dashboard/Exercícios)
-├── style.css        # Folha de estilos completa
-├── script.js        # Lógica central: Gerenciamento de estado, renderização, Canvas e feedback
-├── dados.json       # Banco de dados simulado contendo todos os módulos e perguntas
-└── README.md        # Documentação do projeto
+├── api/
+│   ├── dados.json        # Base de questões e gabarito protegida no servidor
+│   ├── modulos.js        # Serverless Function: Envio higienizado das questões
+│   └── verificar.js      # Serverless Function: Validação segura de respostas
+├── assets/
+│   └── sounds/           # Efeitos sonoros do jogo (click, correct, wrong, completed)
+├── index.html            # Estrutura principal e views da aplicação
+├── style.css             # Estilos, variáveis e responsividade
+├── script.js             # Lógica cliente: Estado, Canvas, fluxo de jogo e Playground
+├── sw.js                 # Service Worker (PWA / Cache offline)
+├── manifest.json         # Manifesto PWA
+└── README.md             # Documentação do projeto
 ```
-## ⚙️ Como Executar Localmente
-* **Como o projeto utiliza a Fetch API para consumir o arquivo dados.json, os navegadores bloqueiam a requisição direta de arquivos locais por questões de segurança (CORS). Para rodar o projeto corretamente na sua máquina:
 
-* **Clone este repositório:
 
-Bash
-git clone [https://github.com/SEU-USUARIO/js-quest.git](https://github.com/SEU-USUARIO/js-quest.git)
-Abra a pasta do projeto no Visual Studio Code.
-
-* **Instale a extensão Live Server (caso não possua).
-
-* **Clique com o botão direito no arquivo index.html e selecione "Open with Live Server".
-
-* **O projeto abrirá automaticamente no seu navegador padrão, pronto para uso!
+---
 
 ## 🧠 Cenários Abordados nos Módulos
-O currículo foge do convencional e aplica a teoria em cenários do dia a dia de um Desenvolvedor Full-Stack:
 
-* Lógica para Sistemas de Delivery (taxas, rotas e horários).
+O currículo aborda situações reais encontradas no dia a dia do desenvolvimento:
 
-* Manipulação de Arrays complexos para Gestão de Estoque e OCR.
+* 🛵 **Lógica para Sistemas de Delivery:** Cálculos de taxas de entrega, janelas de horários e regras condicionais.
+* 📦 **Manipulação Avançada de Arrays:** Gestão de inventário e transformação de dados com `.map()`, `.filter()` e `.reduce()`.
+* 💬 **Integração com WhatsApp:** Formatação e sanitização de URLs para atendimento automático.
+* 🌐 **Consumo de APIs REST:** Requisições assíncronas com tratamento de erros.
+* 💰 **Formatação Monetária:** Internacionalização com `Intl.NumberFormat`.
 
-* Interação com WhatsApp via formatação de URLs.
+---
 
-* Consumo assíncrono de APIs RESTful (viaCEP).
-
-* Orientação a Objetos (OOP) e Formatação Financeira (Intl.NumberFormat).
-
-##
-*Desenvolvido por **Ronaldo Melo** como parte da jornada de especialização em **Desenvolvimento Web Full-Stack.**
+Desenvolvido por **Ronaldo Melo** como parte da jornada de especialização em **Desenvolvimento Web Full-Stack**.

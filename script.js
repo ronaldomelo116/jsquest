@@ -499,6 +499,80 @@ const playgroundChallenges = [
             delete arr[0];
             this.expectedResult = arr;
         }
+    },
+    // --- MÉTODOS DE STRING ---
+    {
+        id: "toUpperCase-1",
+        title: "Maiúsculas com .toUpperCase()",
+        description: "Converta todo o texto para letras maiúsculas. (Dica: use return texto.toUpperCase())",
+        isString: true,
+        setup: function() {
+            const palavras = ["javascript", "frontend", "fullstack", "programação"];
+            this.initialString = palavras[Math.floor(Math.random() * palavras.length)];
+            this.expectedResult = this.initialString.toUpperCase();
+        }
+    },
+    {
+        id: "toLowerCase-1",
+        title: "Minúsculas com .toLowerCase()",
+        description: "Transforme o texto inteiro em letras minúsculas.",
+        isString: true,
+        setup: function() {
+            const palavras = ["DEvClub", "JaVaScRiPt", "VERCEL"];
+            this.initialString = palavras[Math.floor(Math.random() * palavras.length)];
+            this.expectedResult = this.initialString.toLowerCase();
+        }
+    },
+    {
+        id: "trim-1",
+        title: "Limpar espaços com .trim()",
+        description: "Remova os espaços em branco inúteis no início e no final do texto.",
+        isString: true,
+        setup: function() {
+            this.initialString = "   Olá Mundo!   ";
+            this.expectedResult = this.initialString.trim();
+        }
+    },
+    {
+        id: "replace-1",
+        title: "Substituir com .replace()",
+        description: "Substitua a palavra 'difícil' por 'incrível' no texto.",
+        isString: true,
+        setup: function() {
+            this.initialString = "Aprender JS é difícil!";
+            this.expectedResult = this.initialString.replace("difícil", "incrível");
+        }
+    },
+    {
+        id: "split-1",
+        title: "Texto para Array (.split)",
+        description: "Transforme a frase em um array de palavras, separando-as pelos espaços (' ').",
+        isString: true,
+        setup: function() {
+            this.initialString = "HTML CSS JavaScript";
+            this.expectedResult = this.initialString.split(" ");
+        }
+    },
+    {
+        id: "substring-1",
+        title: "Extrair com .substring()",
+        description: "Extraia apenas os 4 primeiros caracteres do texto (posições 0 a 4).",
+        isString: true,
+        setup: function() {
+            this.initialString = "Desenvolvedor";
+            this.expectedResult = this.initialString.substring(0, 4);
+        }
+    },
+    {
+        id: "includes-str-1",
+        title: "Buscar com .includes()",
+        description: "Verifique se a frase contém a palavra 'Quest'. Lembre-se que diferencia maiúsculas de minúsculas!",
+        isString: true,
+        setup: function() {
+            const frases = ["Bem vindo ao JS Quest", "Estudando muito hoje"];
+            this.initialString = frases[Math.floor(Math.random() * frases.length)];
+            this.expectedResult = this.initialString.includes("Quest");
+        }
     }
 ];
 
@@ -550,7 +624,7 @@ function initPlayground() {
 function loadChallenge(challenge, liElement) {
     currentChallenge = challenge;
     
-    // GERA OS NÚMEROS ALEATÓRIOS E O GABARITO ANTES DE MOSTRAR NA TELA
+    // GERA OS NÚMEROS/TEXTOS ALEATÓRIOS
     currentChallenge.setup();
 
     // Atualiza visual da lista
@@ -561,8 +635,12 @@ function loadChallenge(challenge, liElement) {
     pgTitle.textContent = challenge.title;
     pgDesc.textContent = challenge.description;
     
-    // Mostra o array sorteado na tela
-    pgArrayPreview.textContent = JSON.stringify(currentChallenge.initialArray);
+    // VERIFICA SE É STRING OU ARRAY PARA MUDAR O TEXTO DA TELA
+    const previewData = challenge.isString ? challenge.initialString : challenge.initialArray;
+    const rotulo = document.querySelector('.pg-data-preview strong');
+    rotulo.textContent = challenge.isString ? 'Texto inicial: ' : 'Array inicial: ';
+    
+    pgArrayPreview.textContent = JSON.stringify(previewData);
     
     // Reseta editor
     codeInput.value = "";
@@ -575,9 +653,17 @@ btnRunCode.addEventListener('click', () => {
     const userCode = codeInput.value;
 
     try {
-        // Passamos uma cópia do array inicial para a função do usuário
-        const execucao = new Function('array', userCode);
-        const resultadoUsuario = execucao([...currentChallenge.initialArray]);
+        // 1. Define se a variável vai se chamar 'texto' ou 'array'
+        const paramName = currentChallenge.isString ? 'texto' : 'array';
+        const execucao = new Function(paramName, userCode);
+        
+        // 2. Pega o dado correto (a string original ou a cópia do array)
+        const dadoInicial = currentChallenge.isString 
+            ? currentChallenge.initialString 
+            : [...currentChallenge.initialArray];
+            
+        // Executa a função do usuário
+        const resultadoUsuario = execucao(dadoInicial);
 
         // Formata a saída no console
         const formatado = JSON.stringify(resultadoUsuario);
@@ -593,7 +679,7 @@ btnRunCode.addEventListener('click', () => {
             if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }
         }
     } catch (erro) {
-        // Captura erros de sintaxe digitados pelo usuário (ex: esquecer um parêntese)
+        // Captura erros de sintaxe digitados pelo usuário
         consoleResult.textContent = `❌ Erro de Sintaxe: ${erro.message}`;
         consoleResult.className = "console-error";
         if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }

@@ -51,6 +51,11 @@ const somCorrect = new Audio('./assets/sounds/correct.mp3');
 const somWrong = new Audio('./assets/sounds/wrong.mp3');
 const somCompleted = new Audio('./assets/sounds/completed.mp3');
 
+//botão de digas
+const btnHint = document.getElementById('btn-hint');
+const pgHintBox = document.getElementById('pg-hint-box');
+const pgHintText = document.getElementById('pg-hint-text');
+
 // Inicialização chamando a nossa nova API segura
 async function init() {
     updateUI();
@@ -324,8 +329,9 @@ const playgroundChallenges = [
         id: "map-1",
         title: "Dobre os Valores com .map()",
         description: "Use o método .map() para criar um novo array onde cada número seja multiplicado por 2.",
-        setup: function() {
-            this.initialArray = Array.from({length: 5}, () => Math.floor(Math.random() * 10) + 1);
+        hint: "Retorne array.map(num => num * 2);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10) + 1);
             this.expectedResult = this.initialArray.map(x => x * 2);
         }
     },
@@ -333,8 +339,9 @@ const playgroundChallenges = [
         id: "filter-1",
         title: "Filtre os Pares com .filter()",
         description: "Use o método .filter() para criar um novo array contendo apenas os números pares.",
-        setup: function() {
-            this.initialArray = Array.from({length: 6}, () => Math.floor(Math.random() * 20) + 1);
+        hint: "Retorne array.filter(num => num % 2 === 0);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 6 }, () => Math.floor(Math.random() * 20) + 1);
             this.expectedResult = this.initialArray.filter(x => x % 2 === 0);
         }
     },
@@ -342,26 +349,29 @@ const playgroundChallenges = [
         id: "reduce-1",
         title: "Soma Total com .reduce()",
         description: "Use o método .reduce() para somar todos os números do array e retornar o total.",
-        setup: function() {
-            this.initialArray = Array.from({length: 4}, () => Math.floor(Math.random() * 5 + 1) * 10);
+        hint: "Retorne array.reduce((acc, curr) => acc + curr, 0);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 4 }, () => Math.floor(Math.random() * 5 + 1) * 10);
             this.expectedResult = this.initialArray.reduce((acc, curr) => acc + curr, 0);
         }
     },
     {
         id: "push-1",
         title: "Adicionar item com .push()",
-        description: "Adicione o número 99 ao final do array. (Dica: digite array.push(99); e na linha de baixo return array;)",
-        setup: function() {
-            this.initialArray = Array.from({length: 3}, () => Math.floor(Math.random() * 10));
+        description: "Adicione o número 99 ao final do array.",
+        hint: "Na linha 1 digite: array.push(99); Na linha 2 digite: return array;",
+        setup: function () {
+            this.initialArray = Array.from({ length: 3 }, () => Math.floor(Math.random() * 10));
             this.expectedResult = [...this.initialArray, 99];
         }
     },
     {
         id: "pop-1",
         title: "Remover último com .pop()",
-        description: "Remova o último elemento do array. (Dica: use array.pop(); e depois retorne o array)",
-        setup: function() {
-            this.initialArray = Array.from({length: 4}, () => Math.floor(Math.random() * 10));
+        description: "Remova o último elemento do array.",
+        hint: "Na linha 1 digite: array.pop(); Na linha 2 digite: return array;",
+        setup: function () {
+            this.initialArray = Array.from({ length: 4 }, () => Math.floor(Math.random() * 10));
             const arr = [...this.initialArray];
             arr.pop();
             this.expectedResult = arr;
@@ -370,9 +380,10 @@ const playgroundChallenges = [
     {
         id: "shift-1",
         title: "Remover primeiro com .shift()",
-        description: "Remova o primeiro elemento do array. (Dica: use array.shift(); e depois retorne o array)",
-        setup: function() {
-            this.initialArray = Array.from({length: 4}, () => Math.floor(Math.random() * 10));
+        description: "Remova o primeiro elemento do array.",
+        hint: "Na linha 1 digite: array.shift(); Na linha 2 digite: return array;",
+        setup: function () {
+            this.initialArray = Array.from({ length: 4 }, () => Math.floor(Math.random() * 10));
             const arr = [...this.initialArray];
             arr.shift();
             this.expectedResult = arr;
@@ -382,18 +393,20 @@ const playgroundChallenges = [
         id: "length-1",
         title: "Tamanho do Array (.length)",
         description: "A propriedade .length não é um método (não usa parênteses). Retorne o tamanho total deste array.",
-        setup: function() {
+        hint: "Retorne array.length;",
+        setup: function () {
             const randomSize = Math.floor(Math.random() * 5) + 3;
-            this.initialArray = Array.from({length: randomSize}, () => 0);
+            this.initialArray = Array.from({ length: randomSize }, () => 0);
             this.expectedResult = this.initialArray.length;
         }
     },
     {
         id: "sort-1",
         title: "Organizar com .sort()",
-        description: "Retorne o array organizado em ordem crescente. (Dica: para números, use array.sort((a,b) => a - b))",
-        setup: function() {
-            this.initialArray = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
+        description: "Retorne o array organizado em ordem crescente.",
+        hint: "Para ordenar números perfeitamente, retorne array.sort((a, b) => a - b);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 5 }, () => Math.floor(Math.random() * 100));
             this.expectedResult = [...this.initialArray].sort((a, b) => a - b);
         }
     },
@@ -401,8 +414,9 @@ const playgroundChallenges = [
         id: "every-1",
         title: "Teste absoluto com .every()",
         description: "Verifique se TODOS os números do array são maiores que 10. Retorna true ou false.",
-        setup: function() {
-            this.initialArray = Array.from({length: 4}, () => Math.floor(Math.random() * 20) + 5);
+        hint: "Retorne array.every(num => num > 10);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 4 }, () => Math.floor(Math.random() * 20) + 5);
             this.expectedResult = this.initialArray.every(x => x > 10);
         }
     },
@@ -410,8 +424,9 @@ const playgroundChallenges = [
         id: "some-1",
         title: "Teste parcial com .some()",
         description: "Verifique se PELO MENOS UM número do array é maior que 50. Retorna true ou false.",
-        setup: function() {
-            this.initialArray = Array.from({length: 4}, () => Math.floor(Math.random() * 100));
+        hint: "Retorne array.some(num => num > 50);",
+        setup: function () {
+            this.initialArray = Array.from({ length: 4 }, () => Math.floor(Math.random() * 100));
             this.expectedResult = this.initialArray.some(x => x > 50);
         }
     },
@@ -419,7 +434,8 @@ const playgroundChallenges = [
         id: "find-1",
         title: "Encontrar item com .find()",
         description: "Retorne o PRIMEIRO número do array que seja maior que 20.",
-        setup: function() {
+        hint: "Retorne array.find(num => num > 20);",
+        setup: function () {
             this.initialArray = [10, 15, Math.floor(Math.random() * 30) + 21, 5, 40];
             this.expectedResult = this.initialArray.find(x => x > 20);
         }
@@ -428,7 +444,8 @@ const playgroundChallenges = [
         id: "findIndex-1",
         title: "Índice com .findIndex()",
         description: "Retorne a POSIÇÃO (índice) do primeiro número que seja maior que 20.",
-        setup: function() {
+        hint: "Retorne array.findIndex(num => num > 20);",
+        setup: function () {
             this.initialArray = [10, 15, Math.floor(Math.random() * 30) + 21, 5, 40];
             this.expectedResult = this.initialArray.findIndex(x => x > 20);
         }
@@ -437,7 +454,8 @@ const playgroundChallenges = [
         id: "includes-1",
         title: "Contém item? (.includes)",
         description: "Verifique se o número 5 existe dentro deste array. Retorne o boolean.",
-        setup: function() {
+        hint: "Retorne array.includes(5);",
+        setup: function () {
             this.initialArray = [1, 2, 8, Math.random() > 0.5 ? 5 : 9];
             this.expectedResult = this.initialArray.includes(5);
         }
@@ -446,7 +464,8 @@ const playgroundChallenges = [
         id: "concat-1",
         title: "Juntar com .concat()",
         description: "Use .concat() para juntar o array atual com um novo array contendo os números [7, 8, 9].",
-        setup: function() {
+        hint: "Retorne array.concat([7, 8, 9]);",
+        setup: function () {
             this.initialArray = [1, 2, 3];
             this.expectedResult = this.initialArray.concat([7, 8, 9]);
         }
@@ -455,7 +474,8 @@ const playgroundChallenges = [
         id: "join-1",
         title: "Transformar em String (.join)",
         description: "Junte todos os itens do array em um único texto, separados por um traço '-'.",
-        setup: function() {
+        hint: "Retorne array.join('-');",
+        setup: function () {
             this.initialArray = ["HTML", "CSS", "JS"];
             this.expectedResult = this.initialArray.join('-');
         }
@@ -464,7 +484,8 @@ const playgroundChallenges = [
         id: "slice-1",
         title: "Fatiar com .slice()",
         description: "Retorne um novo array pegando apenas os dois primeiros itens do array original.",
-        setup: function() {
+        hint: "Retorne array.slice(0, 2); (corta do índice 0 até o índice 2, sem incluir o 2).",
+        setup: function () {
             this.initialArray = ["Maçã", "Banana", "Pera", "Uva"];
             this.expectedResult = this.initialArray.slice(0, 2);
         }
@@ -473,7 +494,8 @@ const playgroundChallenges = [
         id: "splice-1",
         title: "Remover no meio (.splice)",
         description: "Remova exatamente 1 item a partir da posição (índice) 1. Retorne o array atualizado.",
-        setup: function() {
+        hint: "Na linha 1: array.splice(1, 1); Na linha 2: return array;",
+        setup: function () {
             this.initialArray = ["Maçã", "Laranja", "Banana"];
             const arr = [...this.initialArray];
             arr.splice(1, 1);
@@ -484,7 +506,8 @@ const playgroundChallenges = [
         id: "fill-1",
         title: "Preencher com .fill()",
         description: "Substitua todos os itens do array pelo número 0 e retorne o array.",
-        setup: function() {
+        hint: "Retorne array.fill(0);",
+        setup: function () {
             this.initialArray = [1, 2, 3, 4];
             this.expectedResult = [...this.initialArray].fill(0);
         }
@@ -493,7 +516,8 @@ const playgroundChallenges = [
         id: "delete-1",
         title: "Operador delete",
         description: "Deleções com 'delete' deixam um buraco (undefined). Delete o item da posição 0 e retorne o array.",
-        setup: function() {
+        hint: "Na linha 1: delete array[0]; Na linha 2: return array;",
+        setup: function () {
             this.initialArray = ["React", "Vue", "Angular"];
             const arr = [...this.initialArray];
             delete arr[0];
@@ -504,9 +528,10 @@ const playgroundChallenges = [
     {
         id: "toUpperCase-1",
         title: "Maiúsculas com .toUpperCase()",
-        description: "Converta todo o texto para letras maiúsculas. (Dica: use return texto.toUpperCase())",
+        description: "Converta todo o texto para letras maiúsculas.",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.toUpperCase();",
+        setup: function () {
             const palavras = ["javascript", "frontend", "fullstack", "programação"];
             this.initialString = palavras[Math.floor(Math.random() * palavras.length)];
             this.expectedResult = this.initialString.toUpperCase();
@@ -517,7 +542,8 @@ const playgroundChallenges = [
         title: "Minúsculas com .toLowerCase()",
         description: "Transforme o texto inteiro em letras minúsculas.",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.toLowerCase();",
+        setup: function () {
             const palavras = ["DEvClub", "JaVaScRiPt", "VERCEL"];
             this.initialString = palavras[Math.floor(Math.random() * palavras.length)];
             this.expectedResult = this.initialString.toLowerCase();
@@ -528,7 +554,8 @@ const playgroundChallenges = [
         title: "Limpar espaços com .trim()",
         description: "Remova os espaços em branco inúteis no início e no final do texto.",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.trim();",
+        setup: function () {
             this.initialString = "   Olá Mundo!   ";
             this.expectedResult = this.initialString.trim();
         }
@@ -538,7 +565,8 @@ const playgroundChallenges = [
         title: "Substituir com .replace()",
         description: "Substitua a palavra 'difícil' por 'incrível' no texto.",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.replace('difícil', 'incrível');",
+        setup: function () {
             this.initialString = "Aprender JS é difícil!";
             this.expectedResult = this.initialString.replace("difícil", "incrível");
         }
@@ -548,7 +576,8 @@ const playgroundChallenges = [
         title: "Texto para Array (.split)",
         description: "Transforme a frase em um array de palavras, separando-as pelos espaços (' ').",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.split(' ');",
+        setup: function () {
             this.initialString = "HTML CSS JavaScript";
             this.expectedResult = this.initialString.split(" ");
         }
@@ -558,7 +587,8 @@ const playgroundChallenges = [
         title: "Extrair com .substring()",
         description: "Extraia apenas os 4 primeiros caracteres do texto (posições 0 a 4).",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.substring(0, 4);",
+        setup: function () {
             this.initialString = "Desenvolvedor";
             this.expectedResult = this.initialString.substring(0, 4);
         }
@@ -568,7 +598,8 @@ const playgroundChallenges = [
         title: "Buscar com .includes()",
         description: "Verifique se a frase contém a palavra 'Quest'. Lembre-se que diferencia maiúsculas de minúsculas!",
         isString: true,
-        setup: function() {
+        hint: "Retorne texto.includes('Quest');",
+        setup: function () {
             const frases = ["Bem vindo ao JS Quest", "Estudando muito hoje"];
             this.initialString = frases[Math.floor(Math.random() * frases.length)];
             this.expectedResult = this.initialString.includes("Quest");
@@ -583,7 +614,7 @@ const playgroundList = document.getElementById('playground-list');
 const pgTitle = document.getElementById('pg-title');
 const pgDesc = document.getElementById('pg-desc');
 const pgArrayPreview = document.getElementById('pg-array-preview');
-const codeInput = document.getElementById('code-input');
+
 const btnRunCode = document.getElementById('btn-run-code');
 const consoleResult = document.getElementById('console-result');
 
@@ -623,7 +654,7 @@ function initPlayground() {
 
 function loadChallenge(challenge, liElement) {
     currentChallenge = challenge;
-    
+
     // GERA OS NÚMEROS/TEXTOS ALEATÓRIOS
     currentChallenge.setup();
 
@@ -634,34 +665,44 @@ function loadChallenge(challenge, liElement) {
     // Preenche cabeçalho
     pgTitle.textContent = challenge.title;
     pgDesc.textContent = challenge.description;
-    
+    //digas
+    pgHintText.textContent = challenge.hint;
+    pgHintBox.classList.add('hidden');
+
     // VERIFICA SE É STRING OU ARRAY PARA MUDAR O TEXTO DA TELA
     const previewData = challenge.isString ? challenge.initialString : challenge.initialArray;
     const rotulo = document.querySelector('.pg-data-preview strong');
     rotulo.textContent = challenge.isString ? 'Texto inicial: ' : 'Array inicial: ';
-    
+
     pgArrayPreview.textContent = JSON.stringify(previewData);
-    
+
     // Reseta editor
-    codeInput.value = "";
+    if (editor) editor.setValue("");
     consoleResult.textContent = "Aguardando execução...";
     consoleResult.className = "";
     btnRunCode.disabled = false;
 }
 
+// Lógica para abrir e fechar a dica
+btnHint.addEventListener('click', () => {
+    pgHintBox.classList.toggle('hidden');
+    // Se quiser, adicione o som do clique aqui:
+    if (typeof somClique !== 'undefined') { somClique.currentTime = 0; somClique.play(); }
+});
+
 btnRunCode.addEventListener('click', () => {
-    const userCode = codeInput.value;
+    const userCode = editor.getValue();
 
     try {
         // 1. Define se a variável vai se chamar 'texto' ou 'array'
         const paramName = currentChallenge.isString ? 'texto' : 'array';
         const execucao = new Function(paramName, userCode);
-        
+
         // 2. Pega o dado correto (a string original ou a cópia do array)
-        const dadoInicial = currentChallenge.isString 
-            ? currentChallenge.initialString 
+        const dadoInicial = currentChallenge.isString
+            ? currentChallenge.initialString
             : [...currentChallenge.initialArray];
-            
+
         // Executa a função do usuário
         const resultadoUsuario = execucao(dadoInicial);
 

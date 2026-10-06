@@ -504,6 +504,27 @@ body {
 .console-error { color: #ff5555; }
 .console-success { color: #55ff55; }
 
+
+#btn-hint {
+    color: #666;
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+#btn-hint:hover {
+    color: var(--js-yellow);
+}
+
+.hint-box {
+    background-color: rgba(247, 223, 30, 0.15);
+    border-left: 4px solid var(--js-yellow);
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 4px;
+    color: var(--js-black);
+    font-size: 0.95rem;
+}
+
 @media (max-width: 600px) {
     .app-header {
         padding: 15px;

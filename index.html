@@ -81,10 +81,22 @@
             <div class="playground-editor">
 
                 <div class="editor-header">
-                    <h2 id="pg-title">Selecione um desafio</h2>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 id="pg-title">Selecione um desafio</h2>
+                        <button id="btn-hint" class="btn-icon" title="Ver Dica"
+                            style="color: #666; font-size: 1.5rem; cursor: pointer;"><i
+                                class="bi bi-info-circle-fill"></i></button>
+                    </div>
                     <p id="pg-desc">A descrição aparecerá aqui.</p>
+
+                    <!-- Caixa de Dica Oculta -->
+                    <div id="pg-hint-box" class="hint-box hidden"
+                        style="background-color: rgba(247, 223, 30, 0.15); border-left: 4px solid #F7DF1E; padding: 12px; margin: 15px 0; border-radius: 4px;">
+                        <strong><i class="bi bi-lightbulb-fill"></i> Dica:</strong> <span id="pg-hint-text"></span>
+                    </div>
+
                     <div class="pg-data-preview">
-                        <strong>Array inicial: </strong> <span id="pg-array-preview">[]</span>
+                        <strong id="pg-data-label">Array inicial: </strong> <span id="pg-array-preview">[]</span>
                     </div>
                 </div>
 
@@ -92,7 +104,9 @@
                     <label for="code-input"
                         style="color: #FFFFFF; font-weight: bold; margin-bottom: 8px; display: block;">Escreva seu
                         código JavaScript aqui (use 'return'):</label>
-                    <textarea id="code-input" placeholder="return array.map(...)"></textarea>
+                    <div id="editor-container"
+                        style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; border: 2px solid #2A2A2A;">
+                    </div>
                 </div>
 
                 <div class="editor-footer">
@@ -147,6 +161,29 @@
             </div>
         </div>
     </section>
+
+    <!-- Carrega o Monaco Editor via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+        window.MonacoEnvironment = { getWorkerUrl: () => proxy };
+
+        let editor; // Variável global para acessarmos o editor depois
+
+        require(['vs/editor/editor.main'], function () {
+            editor = monaco.editor.create(document.getElementById('editor-container'), {
+                value: [
+                    '// Escreva seu código aqui',
+                    'return array;'
+                ].join('\n'),
+                language: 'javascript',
+                theme: 'vs-dark', // O clássico tema escuro do VS Code
+                minimap: { enabled: false }, // Desliga o minimapa para poupar espaço
+                fontSize: 14,
+                automaticLayout: true // Faz o editor se ajustar ao tamanho da tela
+            });
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>

@@ -628,6 +628,9 @@ body {
     
     .playground-sidebar {
         padding: 10px;
+        height: auto;
+        overflow: visible;
+        flex-shrink: 0;
     }
 
     /* 5. Carrossel do menu lateral */

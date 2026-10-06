@@ -10,11 +10,13 @@
     --font-main: 'Nunito', sans-serif;
 }
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 html {
     scroll-behavior: smooth;
@@ -591,6 +593,7 @@ body {
     .playground-sidebar {
         padding: 10px;
         border-radius: 8px;
+        max-width: 340px;
     }
     
     .playground-sidebar h3 {
@@ -621,6 +624,7 @@ body {
     /* 3. Ajustes do Cabeçalho e Textos para não vazar da tela */
     .editor-header {
         padding: 12px;
+        max-width: 340px;
     }
     
     #pg-title {
@@ -648,10 +652,20 @@ body {
     .mobile-shortcuts {
         display: flex; /* Garante que a barra de atalhos apareça */
     }
+
+    .editor-body textarea {
+        max-width: 340px;
+    }
+
+
+    .btn-primary {
+        max-width: 340px;
+    }
     
     .console-output {
         padding: 10px;
         min-height: 80px;
         font-size: 0.85rem;
+        max-width: 400px;
     }
 }

@@ -582,90 +582,113 @@ body {
    AJUSTES FINAIS DE RESPONSIVIDADE (MOBILE)
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Ajusta o layout principal */
-    .playground-layout { 
-        grid-template-columns: 1fr; 
-        height: auto; 
-        gap: 10px; 
-    }
-    
-    /* 2. Transforma a barra lateral num Menu Horizontal Rolável */
-    .playground-sidebar {
-        padding: 10px;
-        border-radius: 8px;
-        max-width: 340px;
-    }
-    
-    .playground-sidebar h3 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+    /* 1. Bloqueio definitivo de rolagem horizontal na página inteira */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100vw !important;
+        max-width: 100% !important;
     }
 
+    .logo {
+    font-size: 1rem;
+    }
+    .logo span {
+        display: none;
+    }
+
+    #xp-counter {
+       font-size: 15px;
+    }
+
+    /* 2. Ajusta o container para alinhar no centro sem vazar */
+    .container {
+        width: 100%;
+        max-width: 100vw;
+        padding: 15px 10px;
+        margin-top: 70px;
+        margin-left: 0;
+        margin-right: 0;
+        overflow-x: hidden;
+    }
+
+    /* 3. Muda de Grid para Flex (evita o bug de explosão de tela) */
+    .playground-layout { 
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    /* 4. O "min-width: 0" é o truque que impede os carrosséis de vazarem a tela */
+    .playground-sidebar, .playground-editor {
+        width: 100%;
+        min-width: 0; 
+        max-width: 100%;
+    }
+    
+    .playground-sidebar {
+        padding: 10px;
+    }
+
+    /* 5. Carrossel do menu lateral */
     .playground-list {
         display: flex;
         overflow-x: auto;
         gap: 10px;
         padding-bottom: 5px;
         margin-top: 0;
+        width: 100%;
     }
     
     .playground-list li {
-        white-space: nowrap; /* Impede que o título do botão quebre em duas linhas */
+        white-space: nowrap;
         margin-bottom: 0;
         padding: 8px 12px;
         font-size: 0.9rem;
-        flex-shrink: 0; /* Evita que os botões sejam esmagados */
+        flex-shrink: 0;
     }
 
-    /* Esconde a barra de rolagem visual do menu, mas mantém o toque */
     .playground-list::-webkit-scrollbar { display: none; }
     .playground-list { scrollbar-width: none; }
     
-    /* 3. Ajustes do Cabeçalho e Textos para não vazar da tela */
-    .editor-header {
+    /* 6. Ajustes dos cartões internos para não vazarem */
+    .editor-header, .editor-body, .console-output {
         padding: 12px;
-        max-width: 340px;
+        width: 100%;
     }
     
     #pg-title {
         font-size: 1.1rem;
+        word-wrap: break-word;
     }
     
     .pg-data-preview {
         font-size: 0.85rem;
-        word-break: break-word; /* Se o array for muito grande, joga para a linha de baixo */
-        padding: 8px;
+        word-break: break-word;
+        padding: 10px;
     }
     
-    /* 4. Ajustes do Editor e Console para dar espaço ao teclado */
     .desktop-editor {
-        display: none !important; /* Esconde o Monaco */
+        display: none !important;
     }
     
     .mobile-editor {
-        display: block !important; /* Mostra o Textarea */
-        height: 100px; /* Menor para acomodar a barra de atalhos e o teclado */
-        font-size: 1rem;
+        display: block !important;
+        height: 120px;
         padding: 10px;
+        font-size: 1rem;
+        width: 100%;
     }
     
+    /* 7. Carrossel de atalhos do teclado */
     .mobile-shortcuts {
-        display: flex; /* Garante que a barra de atalhos apareça */
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
     }
-
-    .editor-body textarea {
-        max-width: 340px;
-    }
-
 
     .btn-primary {
-        max-width: 340px;
-    }
-    
-    .console-output {
-        padding: 10px;
-        min-height: 80px;
-        font-size: 0.85rem;
-        max-width: 400px;
+        padding: 12px;
+        width: 100%;
     }
 }

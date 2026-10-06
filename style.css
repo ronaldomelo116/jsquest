@@ -576,78 +576,82 @@ body {
     color: var(--js-black);
 }
 
-@media (max-width: 600px) {
-    .app-header {
-        padding: 15px;
+/* ==========================================
+   AJUSTES FINAIS DE RESPONSIVIDADE (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Ajusta o layout principal */
+    .playground-layout { 
+        grid-template-columns: 1fr; 
+        height: auto; 
+        gap: 10px; 
     }
-
-    .module-card {
-        flex-direction: row;
+    
+    /* 2. Transforma a barra lateral num Menu Horizontal Rolável */
+    .playground-sidebar {
+        padding: 10px;
+        border-radius: 8px;
     }
-
-    .question-content h2 {
-        font-size: 1rem;
-        margin-bottom: 2px;
-    }
-
-    .options-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .option-btn {
-        padding: 15px;
+    
+    .playground-sidebar h3 {
+        font-size: 1.1rem;
         margin-bottom: 10px;
     }
 
-    .feedback-panel,
-    .feedback-panel.error {
-        font-size: 1.2rem;
+    .playground-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 5px;
+        margin-top: 0;
+    }
+    
+    .playground-list li {
+        white-space: nowrap; /* Impede que o título do botão quebre em duas linhas */
+        margin-bottom: 0;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        flex-shrink: 0; /* Evita que os botões sejam esmagados */
     }
 
-    .feedback-panel p,
-    .feedback-panel p {
-        font-size: 0.8rem;
-        font-weight: 600;
+    /* Esconde a barra de rolagem visual do menu, mas mantém o toque */
+    .playground-list::-webkit-scrollbar { display: none; }
+    .playground-list { scrollbar-width: none; }
+    
+    /* 3. Ajustes do Cabeçalho e Textos para não vazar da tela */
+    .editor-header {
+        padding: 12px;
     }
-
-    .feedback-panel h3,
-    .feedback-panel h3 {
-        font-size: 1rem;
+    
+    #pg-title {
+        font-size: 1.1rem;
     }
-
-    .exercise-container {
-        max-width: 500px;
-        padding: 10px 20px;
-
+    
+    .pg-data-preview {
+        font-size: 0.85rem;
+        word-break: break-word; /* Se o array for muito grande, joga para a linha de baixo */
+        padding: 8px;
     }
-
-
-    .btn-primary {
-        margin-bottom: 30px;
-    }
-
-    .btn-primary:disabled {
-        margin-bottom: 30px;
-    }
-
-    .action-footer {
-        margin-bottom: 30px;
-    }
-
-    .playground-layout { grid-template-columns: 1fr; height: auto; }
-
+    
+    /* 4. Ajustes do Editor e Console para dar espaço ao teclado */
     .desktop-editor {
         display: none !important; /* Esconde o Monaco */
     }
+    
     .mobile-editor {
         display: block !important; /* Mostra o Textarea */
+        height: 100px; /* Menor para acomodar a barra de atalhos e o teclado */
+        font-size: 1rem;
+        padding: 10px;
     }
-
+    
     .mobile-shortcuts {
-        display: flex;
+        display: flex; /* Garante que a barra de atalhos apareça */
     }
-
+    
+    .console-output {
+        padding: 10px;
+        min-height: 80px;
+        font-size: 0.85rem;
+    }
 }

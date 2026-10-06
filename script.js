@@ -19,6 +19,13 @@ let currentQuestionIndex = 0;
 let selectedOptionIndex = null;
 let acertosNoMiniProjeto = 0;
 
+//(Injeção de Texto e Botão Dinâmico)
+const shortcutBtns = document.querySelectorAll('.shortcut-btn');
+const dynamicShortcut = document.getElementById('dynamic-shortcut');
+
+//(Tornar o código inteligente)
+const mobileCodeInput = document.getElementById('mobile-code-input');
+
 // Configurações do Canvas
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
@@ -678,9 +685,26 @@ function loadChallenge(challenge, liElement) {
 
     // Reseta editor
     if (editor) editor.setValue("");
+    mobileCodeInput.value = "";
     consoleResult.textContent = "Aguardando execução...";
     consoleResult.className = "";
     btnRunCode.disabled = false;
+
+    // Limpa ambos os editores
+    if (editor) editor.setValue("");
+    mobileCodeInput.value = "";
+
+    // Atualiza o atalho dinâmico baseado no ID do desafio (ex: 'map-1' vira '.map()')
+    if (dynamicShortcut) {
+        const metodo = challenge.id.split('-')[0];
+        // Não aplica para desafios genéricos como length ou delete
+        if (metodo !== 'length' && metodo !== 'delete') {
+            dynamicShortcut.textContent = `.${metodo}()`;
+            dynamicShortcut.style.display = 'block';
+        } else {
+            dynamicShortcut.style.display = 'none';
+        }
+    }
 }
 
 // Lógica para abrir e fechar a dica
@@ -691,7 +715,8 @@ btnHint.addEventListener('click', () => {
 });
 
 btnRunCode.addEventListener('click', () => {
-    const userCode = editor.getValue();
+    const isMobile = window.innerWidth <= 768;
+    const userCode = isMobile ? mobileCodeInput.value : editor.getValue();
 
     try {
         // 1. Define se a variável vai se chamar 'texto' ou 'array'
@@ -725,4 +750,25 @@ btnRunCode.addEventListener('click', () => {
         consoleResult.className = "console-error";
         if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }
     }
+});
+
+// Lógica para injetar o texto dos atalhos no textarea mobile
+shortcutBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita que a tela suba ao clicar
+        if(typeof somClique !== 'undefined') { somClique.currentTime = 0; somClique.play(); }
+
+        const textToInsert = btn.textContent;
+        const startPos = mobileCodeInput.selectionStart;
+        const endPos = mobileCodeInput.selectionEnd;
+        const currentText = mobileCodeInput.value;
+
+        // Insere o atalho exatamente onde o cursor está
+        mobileCodeInput.value = currentText.substring(0, startPos) + textToInsert + currentText.substring(endPos);
+
+        // Devolve o foco para o textarea e move o cursor para logo após o texto inserido
+        mobileCodeInput.focus();
+        mobileCodeInput.selectionStart = startPos + textToInsert.length;
+        mobileCodeInput.selectionEnd = startPos + textToInsert.length;
+    });
 });

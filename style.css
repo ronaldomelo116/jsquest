@@ -525,6 +525,57 @@ body {
     font-size: 0.95rem;
 }
 
+/* Estilo do editor mobile */
+.mobile-editor {
+    width: 100%;
+    height: 150px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #2A2A2A;
+    resize: none;
+    display: none; /* Escondido por padrão (PC) */
+}
+.mobile-editor:focus {
+    outline: 2px solid var(--js-yellow);
+}
+
+
+/* Barra de Atalhos Mobile */
+.mobile-shortcuts {
+    display: none; /* Oculto no PC */
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto; /* Permite rolar para o lado */
+    padding-bottom: 8px;
+    white-space: nowrap;
+}
+
+/* Esconde a barra de rolagem visual, mas mantém a função (Chrome/Safari/Firefox) */
+.mobile-shortcuts::-webkit-scrollbar { display: none; }
+.mobile-shortcuts { scrollbar-width: none; }
+
+.shortcut-btn {
+    background: #2A2A2A;
+    color: var(--white);
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.1s;
+}
+
+.shortcut-btn:active {
+    background: var(--js-yellow);
+    color: var(--js-black);
+}
+
 @media (max-width: 600px) {
     .app-header {
         padding: 15px;
@@ -587,5 +638,16 @@ body {
     }
 
     .playground-layout { grid-template-columns: 1fr; height: auto; }
+
+    .desktop-editor {
+        display: none !important; /* Esconde o Monaco */
+    }
+    .mobile-editor {
+        display: block !important; /* Mostra o Textarea */
+    }
+
+    .mobile-shortcuts {
+        display: flex;
+    }
 
 }

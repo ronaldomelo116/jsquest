@@ -12,23 +12,24 @@ Uma aplicação web gamificada inspirada em plataformas educacionais modernas (c
 * **🛡️ Backend Serverless Seguro (Vercel Functions):**
   * `api/modulos`: Higieniza e entrega as missões sem expor gabaritos ou explicações ao cliente.
   * `api/verificar`: Endpoint `POST` que valida as respostas diretamente no servidor, impedindo que o aluno descubra a resposta inspecionando o código no navegador.
+* **🔁 Sistema de Revisão Dinâmica:** Questões respondidas incorretamente são enviadas automaticamente para uma aba especial de "Revisão". O sistema recria um módulo virtual e as remove da lista assim que corrigidas, reutilizando as rotas seguras do servidor.
 * **🧪 Playground de Código Interativo:**
-  * Aba dedicada para praticar métodos essenciais de array (`.map()`, `.filter()`, `.reduce()`).
+  * Aba dedicada para praticar métodos de array, strings e manipulação de DOM (`.map()`, `.filter()`, `.reduce()`, etc).
   * Execução dinâmica de código com `new Function()`, tratamento amigável de erros de sintaxe e comparação automática entre o resultado retornado e o esperado.
 * **📊 Mini-Projetos Visuais (HTML5 Canvas):** Renderização de dashboards e gráficos dinâmicos via Context2D que reagem em tempo real ao desempenho do jogador.
-* **💾 Persistência de Progresso (LocalStorage):** Pontuação de XP e módulos concluídos são armazenados localmente no navegador.
-* **📱 PWA (Progressive Web App):** Service Worker configurado para cache de recursos essenciais e suporte a funcionamento offline.
+* **💾 Persistência Antifraude (LocalStorage):** O progresso de XP, histórico de erros e módulos concluídos são armazenados localmente e protegidos por uma assinatura digital (Hash + Base64), prevenindo manipulação de dados via DevTools.
+* **📱 Interface Responsiva & PWA:** Layout adaptável para Desktop e Mobile, com Service Worker configurado para cache de recursos essenciais e funcionamento offline.
 * **🔊 Feedback Sonoro & Visual:** Efeitos sonoros para cliques, acertos, erros e conclusão de fases, acompanhados de modais explicativos.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **HTML5:** Estrutura semântica, acessibilidade e views desacopladas (Dashboard, Exercícios e Playground).
-* **CSS3:** Design responsivo (Flexbox e CSS Grid), animações customizadas e paleta inspirada no ecossistema JavaScript.
-* **JavaScript (ES6+ Vanilla):** Manipulação de DOM, execução segura em sandbox, controle de áudio, estados e consumo assíncrono de APIs (`async/await`, `fetch`).
-* **HTML5 Canvas API:** Desenho de gráficos vetoriais para mini-projetos.
-* **Vercel Serverless Functions:** Arquitetura de micro-serviços serverless em Node.js para regras de negócio e validação segura.
+* **HTML5:** Estrutura semântica, acessibilidade e views desacopladas (Dashboard, Exercícios, Playground e Revisão).
+* **CSS3:** Design mobile-first e totalmente responsivo (Flexbox e CSS Grid), alinhamentos absolutos fluidos, animações customizadas e paleta visual inspirada no ecossistema JavaScript.
+* **JavaScript (ES6+ Vanilla):** Lógica complexa de interface, manipulação de estado protegida com hashing, execução em sandbox, e consumo assíncrono de APIs (`async/await`, `fetch`).
+* **HTML5 Canvas API:** Desenho de gráficos vetoriais interativos.
+* **Vercel Serverless Functions:** Arquitetura de micro-serviços em Node.js para regras de negócio fechadas.
 * **Service Workers (PWA):** Cache offline e recursos de aplicação web progressiva.
 * **Bootstrap Icons:** Biblioteca de ícones vetoriais.
 
@@ -45,13 +46,12 @@ Uma aplicação web gamificada inspirada em plataformas educacionais modernas (c
 ├── assets/
 │   └── sounds/           # Efeitos sonoros do jogo (click, correct, wrong, completed)
 ├── index.html            # Estrutura principal e views da aplicação
-├── style.css             # Estilos, variáveis e responsividade
-├── script.js             # Lógica cliente: Estado, Canvas, fluxo de jogo e Playground
+├── style.css             # Estilos, variáveis e regras de responsividade (Media Queries)
+├── script.js             # Lógica cliente: Autenticação de estado, Canvas, fluxo e Playground
 ├── sw.js                 # Service Worker (PWA / Cache offline)
 ├── manifest.json         # Manifesto PWA
 └── README.md             # Documentação do projeto
 ```
-
 
 ---
 
@@ -60,7 +60,7 @@ Uma aplicação web gamificada inspirada em plataformas educacionais modernas (c
 O currículo aborda situações reais encontradas no dia a dia do desenvolvimento:
 
 * 🛵 **Lógica para Sistemas de Delivery:** Cálculos de taxas de entrega, janelas de horários e regras condicionais.
-* 📦 **Manipulação Avançada de Arrays:** Gestão de inventário e transformação de dados com `.map()`, `.filter()` e `.reduce()`.
+* 📦 **Manipulação Avançada de Arrays:** Gestão de inventário e transformação de dados.
 * 💬 **Integração com WhatsApp:** Formatação e sanitização de URLs para atendimento automático.
 * 🌐 **Consumo de APIs REST:** Requisições assíncronas com tratamento de erros.
 * 💰 **Formatação Monetária:** Internacionalização com `Intl.NumberFormat`.

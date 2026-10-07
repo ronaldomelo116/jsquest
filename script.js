@@ -1,3 +1,4 @@
+
 // Registro do Service Worker (PWA)
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -7,11 +8,46 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Gerenciamento de Estado
-let userData = JSON.parse(localStorage.getItem('jsQuestData')) || {
-    xp: 0,
-    completedModules: []
-};
+// ==========================================
+// SISTEMA DE SEGURANÇA ANTIFRAUDE (HASH + BASE64)
+// ==========================================
+const SECRET_SALT = "jsquest_super_secreto_2026_xpto";
+
+function gerarHashSeguro(texto) {
+    let hash = 0;
+    for (let i = 0; i < texto.length; i++) {
+        const char = texto.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return hash.toString();
+}
+
+function carregarProgressoSeguro() {
+    const dadosSalvos = localStorage.getItem('jsQuestData');
+    if (dadosSalvos) {
+        try {
+            const pacote = JSON.parse(dadosSalvos);
+            if (pacote.payload && pacote.hash) {
+                const jsonString = atob(pacote.payload); // Reverte o Base64
+                const hashCalculada = gerarHashSeguro(jsonString + SECRET_SALT);
+                
+                if (hashCalculada === pacote.hash) {
+                    return JSON.parse(jsonString); // Assinatura bateu certo!
+                } else {
+                    console.error("Tentativa de manipulação detetada! Progresso resetado.");
+                    localStorage.removeItem('jsQuestData');
+                }
+            }
+        } catch (erro) {
+            localStorage.removeItem('jsQuestData');
+        }
+    }
+    return { xp: 0, completedModules: [] };
+}
+
+// Gerenciamento de Estado (Agora usando o carregamento seguro)
+let userData = carregarProgressoSeguro();
 
 let curriculum = [];
 let currentModule = null;
@@ -88,7 +124,22 @@ function updateUI() {
 }
 
 function saveProgress() {
-    localStorage.setItem('jsQuestData', JSON.stringify(userData));
+    // 1. Converte para texto
+    const jsonString = JSON.stringify(userData);
+    
+    // 2. Ofusca em Base64
+    const dadosOfuscados = btoa(jsonString);
+    
+    // 3. Cria a assinatura com a senha secreta
+    const assinatura = gerarHashSeguro(jsonString + SECRET_SALT);
+    
+    // 4. Guarda apenas o pacote criptografado
+    const pacoteSeguro = {
+        payload: dadosOfuscados,
+        hash: assinatura
+    };
+    
+    localStorage.setItem('jsQuestData', JSON.stringify(pacoteSeguro));
     updateUI();
 }
 

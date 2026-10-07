@@ -611,7 +611,255 @@ const playgroundChallenges = [
             this.initialString = frases[Math.floor(Math.random() * frases.length)];
             this.expectedResult = this.initialString.includes("Quest");
         }
-    }
+    },
+    // --- MÉTODOS DE DOM (VISUAL) ---
+    {
+        id: "dom-color-1",
+        title: "Mudar Cor (.style.backgroundColor)",
+        isDOM: true,
+        paramName: "caixa",
+        setup: function() {
+            const cores = [
+                { nome: "azul", valor: "blue" },
+                { nome: "verde", valor: "green" },
+                { nome: "roxo", valor: "purple" },
+                { nome: "laranja", valor: "orange" }
+            ];
+            const corSorteada = cores[Math.floor(Math.random() * cores.length)];
+            
+            // A descrição e a dica mudam a cada sorteio!
+            this.description = `Altere a cor de fundo da caixa para ${corSorteada.nome} ('${corSorteada.valor}').`;
+            this.hint = `Digite: caixa.style.backgroundColor = '${corSorteada.valor}';`;
+            
+            this.targetHTML = `<div id="dom-box" style="width: 100px; height: 100px; background: #111; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; transition: background 0.3s;">Caixa</div>`;
+            this.successMsg = `A caixa ficou ${corSorteada.nome}!`;
+            this.validate = (el) => el.style.backgroundColor === corSorteada.valor;
+        }
+    },
+    {
+        id: "dom-text-1",
+        title: "Alterar Texto (.textContent)",
+        isDOM: true,
+        paramName: "botao",
+        setup: function() {
+            const palavras = ["Aprovado!", "Concluído!", "Enviado!", "Sucesso!"];
+            const sorteada = palavras[Math.floor(Math.random() * palavras.length)];
+            
+            this.description = `Mude o texto dentro do botão para '${sorteada}'.`;
+            this.hint = `Digite: botao.textContent = '${sorteada}';`;
+            
+            this.targetHTML = `<button id="dom-btn" class="btn-primary" style="width: auto; pointer-events: none; transition: all 0.3s;">Clique Aqui</button>`;
+            this.successMsg = `O texto mudou perfeitamente!`;
+            this.validate = (el) => el.textContent === sorteada;
+        }
+    },
+    {
+        id: "dom-hide-1",
+        title: "Esconder Elemento (.style.display)",
+        isDOM: true,
+        paramName: "quadrado",
+        setup: function() {
+            this.description = "Faça o quadrado desaparecer da tela usando a propriedade display CSS.";
+            this.hint = "Digite: quadrado.style.display = 'none';";
+            this.targetHTML = `<div id="dom-ghost" style="width: 100px; height: 100px; background: #F7DF1E; color: #111; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold;">Fantasma</div>`;
+            this.successMsg = "Você fez o elemento desaparecer!";
+            this.validate = (el) => el.style.display === 'none';
+        }
+    },
+    {
+        id: "dom-border-1",
+        title: "Arredondar Bordas (.style.borderRadius)",
+        isDOM: true,
+        paramName: "foto",
+        setup: function() {
+            // Sorteia um nome aleatório para gerar a imagem inicial
+            const nomesIniciais = ["Aki", "Bandit", "Cali", "Loki", "Oreo", "Bella", "Duke", "Milo"];
+            const sementeInicial = nomesIniciais[Math.floor(Math.random() * nomesIniciais.length)];
+            
+            const formatos = [
+                { desc: "um círculo perfeito", valor: "50%" },
+                { desc: "bordas levemente arredondadas", valor: "15px" }
+            ];
+            const sorteado = formatos[Math.floor(Math.random() * formatos.length)];
+            
+            this.description = `Transforme a foto em ${sorteado.desc} usando '${sorteado.valor}'.`;
+            this.hint = `Digite: foto.style.borderRadius = '${sorteado.valor}';`;
+            
+            // A imagem inicial agora muda toda vez que o exercício é aberto!
+            this.targetHTML = `<div id="dom-photo" style="width: 100px; height: 100px; background: url('https://api.dicebear.com/7.x/avataaars/svg?seed=${sementeInicial}') center/cover; border: 4px solid #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: border-radius 0.4s; background-color: #f0f0f0;"></div>`;
+            this.successMsg = `A foto foi cortada para ${sorteado.valor}!`;
+            this.validate = (el) => el.style.borderRadius === sorteado.valor;
+        }
+    },
+    {
+        id: "dom-font-1",
+        title: "Tamanho da Fonte (.style.fontSize)",
+        isDOM: true,
+        paramName: "titulo",
+        setup: function() {
+            const tamanhos = ["24px", "32px", "40px", "50px"];
+            const sorteado = tamanhos[Math.floor(Math.random() * tamanhos.length)];
+            
+            this.description = `Aumente o tamanho da fonte do título para '${sorteado}'.`;
+            this.hint = `Digite: titulo.style.fontSize = '${sorteado}';`;
+            
+            this.targetHTML = `<h3 id="dom-title" style="font-size: 14px; margin: 0; transition: font-size 0.3s; color: #111;">Texto Flexível</h3>`;
+            this.successMsg = `A fonte cresceu perfeitamente!`;
+            this.validate = (el) => el.style.fontSize === sorteado;
+        }
+    },
+    {
+        id: "dom-class-1",
+        title: "Adicionar Classe (.classList.add)",
+        isDOM: true,
+        paramName: "cartao",
+        setup: function() {
+            const classes = ["ativo", "destaque", "sucesso"];
+            const sorteada = classes[Math.floor(Math.random() * classes.length)];
+            
+            this.description = `O HTML já possui classes CSS prontas escondidas. Adicione a classe '${sorteada}' ao cartão usando .classList.add()`;
+            this.hint = `Digite: cartao.classList.add('${sorteada}');`;
+            
+            this.targetHTML = `<div id="dom-card" class="cartao-base" style="padding: 20px; background: #fff; border: 2px solid #ccc; border-radius: 8px; transition: all 0.3s;">Cartão Simples</div>`;
+            this.successMsg = `A classe '${sorteada}' ativada com sucesso!`;
+            this.validate = (el) => el.classList.contains(sorteada);
+        }
+    },
+    {
+        id: "dom-class-remove-1",
+        title: "Remover Classe (.classList.remove)",
+        isDOM: true,
+        paramName: "modal",
+        setup: function() {
+            this.description = "O elemento possui a classe 'bloqueado' que o deixa cinza e apagado. Use .classList.remove() para tirar essa classe e revelar a cor original.";
+            this.hint = "Digite: modal.classList.remove('bloqueado');";
+            
+            // Injetamos uma tag <style> junto para a classe 'bloqueado' existir visualmente no palco
+            this.targetHTML = `
+                <style>.bloqueado { opacity: 0.3; filter: grayscale(100%); }</style>
+                <div id="dom-modal" class="bloqueado" style="width: 100px; height: 100px; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; transition: all 0.5s;">Liberado</div>
+            `;
+            this.successMsg = "Classe removida, elemento liberado!";
+            this.validate = (el) => !el.classList.contains('bloqueado');
+        }
+    },
+    {
+        id: "dom-value-1",
+        title: "Preencher Input (.value)",
+        isDOM: true,
+        paramName: "campo",
+        setup: function() {
+            const tecnologias = ["React", "Node.js", "Firebase", "Vercel"];
+            const sorteado = tecnologias[Math.floor(Math.random() * tecnologias.length)];
+            
+            this.description = `Preencha este campo de formulário com o valor '${sorteado}'.`;
+            this.hint = `Digite: campo.value = '${sorteado}';`;
+            
+            this.targetHTML = `<input type="text" id="dom-input" placeholder="Digite algo..." style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 16px; color: #333;" readonly>`;
+            this.successMsg = `Campo preenchido com ${sorteado}!`;
+            this.validate = (el) => el.value === sorteado;
+        }
+    },
+    {
+        id: "dom-disable-1",
+        title: "Desativar Botão (.disabled)",
+        isDOM: true,
+        paramName: "botao",
+        setup: function() {
+            this.description = "Para evitar que o usuário clique duas vezes e envie o formulário duplicado, desative o botão mudando a propriedade .disabled para true.";
+            this.hint = "Digite: botao.disabled = true;";
+            
+            this.targetHTML = `<button id="dom-btn-submit" class="btn-primary" style="width: auto;">Enviar Dados</button>`;
+            this.successMsg = "Botão desativado em segurança!";
+            this.validate = (el) => el.disabled === true;
+        }
+    },
+    {
+        id: "dom-innerhtml-1",
+        title: "Injetar HTML (.innerHTML)",
+        isDOM: true,
+        paramName: "caixa",
+        setup: function() {
+            this.description = "O .textContent só aceita textos puros. Use o .innerHTML para injetar a tag <strong>JS</strong> dentro da caixa.";
+            this.hint = "Digite: caixa.innerHTML = '<strong>JS</strong>';";
+            
+            this.targetHTML = `<div id="dom-inner" style="padding: 20px; background: #fff; border: 2px dashed #333; border-radius: 8px; color: #333; text-align: center;">Vazio</div>`;
+            this.successMsg = "Tag HTML interpretada e injetada com sucesso!";
+            // Valida se ele colocou a tag certinha (os navegadores podem converter as tags para maiúsculo, então checamos ambas)
+            this.validate = (el) => el.innerHTML === '<strong>JS</strong>' || el.innerHTML === '<STRONG>JS</STRONG>';
+        }
+    },
+    {
+        id: "dom-src-1",
+        title: "Trocar Imagem (.src)",
+        isDOM: true,
+        paramName: "imagem",
+        setup: function() {
+            const avatares = ["Mia", "Felix", "Leo", "Bella", "Max", "Luna", "Charlie", "Lucy", "Buster"];
+            
+            // 1. Sorteia a imagem inicial
+            const sementeInicial = avatares[Math.floor(Math.random() * avatares.length)];
+            
+            // 2. Filtra a lista para garantir que a imagem alvo seja DIFERENTE da inicial
+            const avataresRestantes = avatares.filter(nome => nome !== sementeInicial);
+            const sorteado = avataresRestantes[Math.floor(Math.random() * avataresRestantes.length)];
+            
+            const urlInicial = `https://api.dicebear.com/7.x/avataaars/svg?seed=${sementeInicial}`;
+            const novaUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${sorteado}`;
+            
+            this.description = `A imagem atual é o avatar '${sementeInicial}'. Acesse a propriedade .src e mude a URL para carregar o avatar '${sorteado}': "${novaUrl}"`;
+            this.hint = `Digite: imagem.src = '${novaUrl}';`;
+            
+            // Injeta a imagem inicial aleatória
+            this.targetHTML = `<img id="dom-img" src="${urlInicial}" style="width: 100px; height: 100px; border-radius: 8px; background: #fff; border: 4px solid #F7DF1E; transition: all 0.3s;">`;
+            this.successMsg = `Avatar atualizado de ${sementeInicial} para ${sorteado}!`;
+            this.validate = (el) => el.src === novaUrl;
+        }
+    },
+    {
+        id: "dom-transform-1",
+        title: "Girar Elemento (.style.transform)",
+        isDOM: true,
+        paramName: "seta",
+        setup: function() {
+            const direcoes = [
+                { grau: "90deg", nome: "direita" },
+                { grau: "180deg", nome: "baixo" },
+                { grau: "270deg", nome: "esquerda" }
+            ];
+            const sorteado = direcoes[Math.floor(Math.random() * direcoes.length)];
+            
+            this.description = `Gire a seta para a ${sorteado.nome} aplicando 'rotate(${sorteado.grau})' na propriedade CSS transform.`;
+            this.hint = `Digite: seta.style.transform = 'rotate(${sorteado.grau})';`;
+            
+            this.targetHTML = `<div id="dom-arrow" style="font-size: 50px; display: inline-block; transition: transform 0.4s ease-out;">⬆️</div>`;
+            this.successMsg = `Seta girada para a ${sorteado.nome}!`;
+            this.validate = (el) => el.style.transform.includes(sorteado.grau.replace('deg', '')); // O navegador tira o 'deg' às vezes ao renderizar
+        }
+    },
+    {
+        id: "dom-alt-1",
+        title: "Texto Alternativo (.alt)",
+        isDOM: true,
+        paramName: "imagem",
+        setup: function() {
+            // Sorteia imagens e suas respectivas descrições de acessibilidade
+            const opcoes = [
+                { seed: "Coco", desc: "Cachorrinho fofo" },
+                { seed: "Buster", desc: "Gato sorridente" },
+                { seed: "Simba", desc: "Leãozinho estiloso" },
+                { seed: "Toby", desc: "Programador focado" }
+            ];
+            const sorteado = opcoes[Math.floor(Math.random() * opcoes.length)];
+            
+            this.description = `Por questões de acessibilidade (leitores de tela), adicione a descrição '${sorteado.desc}' no atributo .alt desta imagem.`;
+            this.hint = `Digite: imagem.alt = '${sorteado.desc}';`;
+            
+            this.targetHTML = `<img id="dom-img-alt" src="https://api.dicebear.com/7.x/avataaars/svg?seed=${sorteado.seed}" alt="" style="width: 100px; height: 100px; border-radius: 8px; background: #fff; border: 4px solid #ccc;">`;
+            this.successMsg = `Acessibilidade garantida! Atributo alt preenchido com sucesso.`;
+            this.validate = (el) => el.alt === sorteado.desc;
+        }
+    }  
 ];
 
 const navJourney = document.getElementById('nav-journey');
@@ -624,6 +872,9 @@ const pgArrayPreview = document.getElementById('pg-array-preview');
 
 const btnRunCode = document.getElementById('btn-run-code');
 const consoleResult = document.getElementById('console-result');
+
+const domPreviewContainer = document.getElementById('dom-preview-container');
+const pgDataPreview = document.querySelector('.pg-data-preview');
 
 let currentChallenge = null;
 
@@ -651,16 +902,53 @@ navPlayground.addEventListener('click', () => {
 });
 
 
+// Inicializa a lista lateral do Playground com categorias
 function initPlayground() {
-    playgroundList.innerHTML = '';
-    playgroundChallenges.forEach((challenge, index) => {
-        const li = document.createElement('li');
-        li.textContent = challenge.title;
-        li.addEventListener('click', () => loadChallenge(challenge, li));
-        playgroundList.appendChild(li);
+    const sidebar = document.querySelector('.playground-sidebar');
+    sidebar.innerHTML = ''; // Limpa a barra lateral
 
-        if (index === 0) loadChallenge(challenge, li);
-    });
+    // Separa os desafios pelas suas propriedades
+    const desafiosArray = playgroundChallenges.filter(c => !c.isString && !c.isDOM);
+    const desafiosString = playgroundChallenges.filter(c => c.isString);
+    const desafiosDOM = playgroundChallenges.filter(c => c.isDOM);
+
+    // Função interna que constrói cada grupo na tela
+    function criarCategoria(titulo, desafios) {
+        if (desafios.length === 0) return;
+
+        // Cria o título (h3)
+        const h3 = document.createElement('h3');
+        h3.textContent = titulo;
+        // Adiciona um espaço extra no topo se não for a primeira categoria
+        h3.style.marginTop = sidebar.children.length > 0 ? '25px' : '0';
+        sidebar.appendChild(h3);
+
+        // Cria a lista (ul)
+        const ul = document.createElement('ul');
+        ul.className = 'playground-list';
+
+        // Preenche a lista com os botões
+        desafios.forEach((challenge) => {
+            const li = document.createElement('li');
+            li.textContent = challenge.title;
+            li.addEventListener('click', () => loadChallenge(challenge, li));
+            ul.appendChild(li);
+        });
+
+        sidebar.appendChild(ul);
+    }
+
+    // Renderiza as categorias na ordem desejada
+    criarCategoria('Métodos de Array', desafiosArray);
+    criarCategoria('Métodos de String', desafiosString);
+    criarCategoria('MÉTODOS DE DOM (VISUAL)', desafiosDOM);
+
+    // Seleciona automaticamente o primeiro desafio da primeira lista ao abrir
+    if (playgroundChallenges.length > 0) {
+        const primeiroLi = sidebar.querySelector('li');
+        // Pega o primeiro desafio do array geral (que será o map-1)
+        loadChallenge(playgroundChallenges[0], primeiroLi);
+    }
 }
 
 function loadChallenge(challenge, liElement) {
@@ -679,6 +967,25 @@ function loadChallenge(challenge, liElement) {
     //digas
     pgHintText.textContent = challenge.hint;
     pgHintBox.classList.add('hidden');
+
+    pgTitle.textContent = challenge.title;
+    pgDesc.textContent = challenge.description;
+    pgHintText.textContent = challenge.hint;
+    pgHintBox.classList.add('hidden');
+    
+    // NOVO: Alterna entre Modo Texto/Array e Modo DOM Visual
+    if (challenge.isDOM) {
+        pgDataPreview.classList.add('hidden');
+        domPreviewContainer.classList.remove('hidden');
+        domPreviewContainer.innerHTML = challenge.targetHTML; // Desenha o elemento na tela
+    } else {
+        domPreviewContainer.classList.add('hidden');
+        pgDataPreview.classList.remove('hidden');
+        
+        const previewData = challenge.isString ? challenge.initialString : challenge.initialArray;
+        document.getElementById('pg-data-label').textContent = challenge.isString ? 'Texto inicial: ' : 'Array inicial: ';
+        pgArrayPreview.textContent = JSON.stringify(previewData);
+    }
 
     // VERIFICA SE É STRING OU ARRAY PARA MUDAR O TEXTO DA TELA
     const previewData = challenge.isString ? challenge.initialString : challenge.initialArray;
@@ -718,24 +1025,52 @@ btnHint.addEventListener('click', () => {
     if (typeof somClique !== 'undefined') { somClique.currentTime = 0; somClique.play(); }
 });
 
+// O Motor de Execução de Código
 btnRunCode.addEventListener('click', () => {
+    // Deteta se está no telemóvel ou no PC
     const isMobile = window.innerWidth <= 768;
-    const userCode = isMobile ? mobileCodeInput.value : editor.getValue();
+    const userCode = isMobile ? mobileCodeInput.value : (typeof editor !== 'undefined' ? editor.getValue() : codeInput.value);
 
     try {
-        // 1. Define se a variável vai se chamar 'texto' ou 'array'
+        // =====================================
+        // MODO 1: MANIPULAÇÃO DE DOM (VISUAL)
+        // =====================================
+        if (currentChallenge.isDOM) {
+            // Pega o elemento visual que está dentro do nosso "palco"
+            const targetElement = domPreviewContainer.firstElementChild;
+            
+            // Define o nome da variável baseando-se na palavra-chave do ID do desafio
+            const paramName = currentChallenge.paramName || 'elemento';
+            
+            // Cria a função nativa e passa o elemento HTML real para ela
+            const execucao = new Function(paramName, userCode);
+            execucao(targetElement); 
+            
+            // Verifica se o usuário conseguiu alterar o HTML corretamente
+            if (currentChallenge.validate(targetElement)) {
+                consoleResult.textContent = `> DOM Manipulado!\n\n✅ Sucesso: ${currentChallenge.successMsg}`;
+                consoleResult.className = "console-success";
+                if (typeof somCorrect !== 'undefined') { somCorrect.currentTime = 0; somCorrect.play(); }
+            } else {
+                consoleResult.textContent = `> Nenhuma mudança válida detectada.\n\n❌ Ops! O elemento não atingiu o estado visual esperado.`;
+                consoleResult.className = "console-error";
+                if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }
+            }
+            return; // Encerra a função aqui para não rodar a lógica de array abaixo
+        }
+
+        // =====================================
+        // MODO 2: ARRAYS E STRINGS (TEXTO)
+        // =====================================
         const paramName = currentChallenge.isString ? 'texto' : 'array';
         const execucao = new Function(paramName, userCode);
-
-        // 2. Pega o dado correto (a string original ou a cópia do array)
-        const dadoInicial = currentChallenge.isString
-            ? currentChallenge.initialString
+        
+        const dadoInicial = currentChallenge.isString 
+            ? currentChallenge.initialString 
             : [...currentChallenge.initialArray];
-
-        // Executa a função do usuário
+            
         const resultadoUsuario = execucao(dadoInicial);
 
-        // Formata a saída no console
         const formatado = JSON.stringify(resultadoUsuario);
         const esperado = JSON.stringify(currentChallenge.expectedResult);
 
@@ -749,8 +1084,7 @@ btnRunCode.addEventListener('click', () => {
             if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }
         }
     } catch (erro) {
-        // Captura erros de sintaxe digitados pelo usuário
-        consoleResult.textContent = `❌ Erro de Sintaxe: ${erro.message}`;
+        consoleResult.textContent = `❌ Erro de Sintaxe ou Execução: ${erro.message}`;
         consoleResult.className = "console-error";
         if (typeof somWrong !== 'undefined') { somWrong.currentTime = 0; somWrong.play(); }
     }

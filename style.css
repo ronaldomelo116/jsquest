@@ -617,6 +617,8 @@ body {
         flex-direction: column;
         gap: 15px;
         width: 100%;
+        height: auto;
+        padding-bottom: 50px;
     }
     
     /* 4. O "min-width: 0" é o truque que impede os carrosséis de vazarem a tela */

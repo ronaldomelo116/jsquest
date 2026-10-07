@@ -71,10 +71,9 @@
 
             <!-- 1. Lateral com a lista de exercícios -->
             <div class="playground-sidebar">
-                <h3>Métodos de Array</h3>
+                <!---<h3>Métodos de Array</h3>
                 <ul id="playground-list" class="playground-list">
-                    <!-- Gerado via JS -->
-                </ul>
+                </ul>-->
             </div>
 
             <!-- 2. Área Direita (Editor, Botão e Console) TUDO DENTRO DESTA DIV -->
@@ -98,7 +97,14 @@
                     <div class="pg-data-preview">
                         <strong id="pg-data-label">Array inicial: </strong> <span id="pg-array-preview">[]</span>
                     </div>
+
+                    <div id="dom-preview-container" class="hidden"
+                        style="margin-top: 15px; padding: 30px; background: #e9ecef; border: 2px dashed #adb5bd; border-radius: 8px; display: flex; justify-content: center; align-items: center; min-height: 120px;">
+                        <!-- O elemento alvo será injetado aqui via JS -->
+                    </div>
+
                 </div>
+
 
                 <div class="editor-body">
                     <label style="color: #FFFFFF; font-weight: bold; margin-bottom: 8px; display: block;">Escreva seu

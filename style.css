@@ -402,6 +402,9 @@ body {
 .app-nav {
     display: flex;
     gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .nav-btn {
@@ -578,6 +581,28 @@ body {
     color: var(--js-black);
 }
 
+.review-badge{
+    background: #dc3545;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 2px 7px;
+    margin-left: 4px;
+}
+
+.review-origin {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #666;
+    background: #f3f3f3;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+
+
 footer a:hover {
     color: var(--js-yellow) !important;
 }
@@ -598,6 +623,24 @@ footer a:hover {
     }
     .logo span {
         display: none;
+    }
+
+    /* Reduz o padding lateral do header no celular para ganhar espaço */
+    .app-header {
+        padding: 10px 10px;
+    }
+
+    /* Retorna o menu para o fluxo normal no celular e diminui o espaço entre botões */
+    .app-nav {
+        position: static;
+        transform: none;
+        gap: 2px;
+    }
+
+    /* Diminui o texto e os botões da navegação para caberem na tela */
+    .nav-btn {
+        font-size: 0.8rem;
+        padding: 5px 6px;
     }
 
     #xp-counter {
@@ -700,4 +743,5 @@ footer a:hover {
         padding: 12px;
         width: 100%;
     }
+
 }

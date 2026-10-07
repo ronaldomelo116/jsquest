@@ -7,28 +7,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "JavaScript é usado para fazer sites dinâmicos, criar aplicativos móveis e jogos, processar dados e muito mais! O JavaScript torna as páginas da web e as aplicações…",
-                "options": ["Estruturadas", "Coloridas", "Interativas", "Estáticas"],
+                "text": "Você está começando um projeto web. Qual é o principal papel do JavaScript em uma página?",
+                "options": [
+                    "Criar apenas a estrutura da página",
+                    "Adicionar somente cores e estilos",
+                    "Adicionar interatividade e comportamento à página",
+                    "Substituir completamente o HTML"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O HTML cria a estrutura (esqueleto), o CSS adiciona as cores (roupa), e o JavaScript é o 'músculo' que traz a interatividade e a inteligência para a aplicação."
+                "explanation": "HTML estrutura a página, CSS cuida da apresentação e JavaScript adiciona comportamento e interatividade."
             },
             {
-                "text": "Onde o código JavaScript pode ser executado atualmente?",
-                "options": ["Apenas em navegadores (Google Chrome, Edge, Safari).", "Apenas em servidores na nuvem.", "Em navegadores, servidores (Node.js) e até em celulares (Mobile).", "Somente dentro de bancos de dados."],
+                "text": "Onde o JavaScript pode ser executado atualmente?",
+                "options": [
+                    "Somente em navegadores",
+                    "Somente em servidores",
+                    "Em navegadores, servidores com Node.js e outros ambientes",
+                    "Somente em bancos de dados"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O JavaScript evoluiu para se tornar uma linguagem universal! Hoje ele domina tanto o Front-end (telas) quanto o Back-end (servidores com Node.js) e até o desenvolvimento mobile."
+                "explanation": "JavaScript pode ser executado no navegador e também em ambientes como Node.js, entre outros."
             },
             {
-                "text": "Qual tag HTML é utilizada para conectar o seu arquivo de código JavaScript (script.js) à página web?",
-                "options": ["<js src=\"script.js\">", "<script src=\"script.js\"></script>", "<link rel=\"javascript\" href=\"script.js\">", "<code src=\"script.js\">"],
+                "text": "Você criou um arquivo chamado script.js. Qual tag conecta esse arquivo ao HTML?",
+                "options": [
+                    "<js src=\"script.js\">",
+                    "<script src=\"script.js\"></script>",
+                    "<link rel=\"javascript\" href=\"script.js\">",
+                    "<code src=\"script.js\">"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A tag <script> é a forma padrão de carregar códigos no navegador. O atributo 'src' (source) aponta o caminho para o seu arquivo .js."
+                "explanation": "A tag <script> com o atributo src é a forma padrão de carregar um arquivo JavaScript externo."
             },
             {
-                "text": "Quando você está programando e precisa ver o resultado de uma variável ou encontrar um erro nos bastidores, qual comando você usa para imprimir mensagens que o usuário comum não vê?",
-                "options": ["print('Olá');", "document.write('Olá');", "console.log('Olá');", "show('Olá');"],
+                "text": "Você quer descobrir no Console o valor de uma variável durante os testes. Qual código deve usar?",
+                "options": [
+                    "print(valor);",
+                    "document.write(valor);",
+                    "console.log(valor);",
+                    "show(valor);"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'console.log()' é o melhor amigo do desenvolvedor! Ele imprime mensagens na aba Console (F12) do navegador, sendo a principal forma de testar lógicas e caçar bugs (erros) no código."
+                "explanation": "console.log() envia informações para o Console do navegador e é muito usado para testar valores e investigar problemas."
+            },
+            {
+                "text": "O que acontece ao executar este código? const nome = \"Ronaldo\"; console.log(`Olá, ${nome}!`);",
+                "options": [
+                    "Nada é exibido",
+                    "É exibido \"Olá, Ronaldo!\"",
+                    "É exibido \"Olá, ${nome}!\"",
+                    "O navegador cria um novo elemento HTML"
+                ],
+                "correctAnswer": 1,
+                "explanation": "As Template Literals permitem inserir o valor de uma variável usando ${variavel} dentro de crases."
             }
         ]
     },
@@ -40,34 +71,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Para armazenar o preço fixo da taxa de entrega que nunca muda durante a sessão, qual declaração você deve usar?",
-                "options": ["let taxa = 5.00;", "const taxa = 5.00;", "var taxa = 5.00;", "static taxa = 5.00;"],
+                "text": "A taxa de entrega é fixa durante a execução do sistema. Qual declaração representa melhor esse valor?",
+                "options": [
+                    "let taxa = 5.00;",
+                    "const taxa = 5.00;",
+                    "var taxa = 5.00;",
+                    "static taxa = 5.00;"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A palavra-chave 'const' é usada para declarar variáveis cujo valor não pode ser reatribuído. Como a taxa é fixa, 'const' evita alterações acidentais no código."
+                "explanation": "const é indicada quando a variável não precisa ser reatribuída."
             },
             {
-                "text": "Se você precisa concatenar o nome do cliente com o total do pedido em uma mensagem, qual é a sintaxe mais limpa (Template Literals)?",
-                "options": ["'Olá ' + cliente + ', total: R$' + total", "\"Olá \" + cliente + \", total: R$\" + total", "`Olá ${cliente}, total: R$${total}`", "String('Olá ', cliente, ' total: R$', total)"],
+                "text": "Você precisa montar uma mensagem com o nome do cliente e o total do pedido. Qual opção usa Template Literal corretamente?",
+                "options": [
+                    "'Olá ' + cliente + ', total: R$' + total",
+                    "\"Olá \" + cliente + \", total: R$\" + total",
+                    "`Olá ${cliente}, total: R$${total}`",
+                    "String('Olá ', cliente, total)"
+                ],
                 "correctAnswer": 2,
-                "explanation": "Template literals usam crases (`) e permitem injetar variáveis diretamente no texto usando a sintaxe ${variavel}, deixando o código limpo."
+                "explanation": "Template Literals usam crases e permitem inserir expressões com ${}."
             },
             {
-                "text": "Como declarar uma variável booleana indicando que a loja está aberta para receber pedidos?",
-                "options": ["const isOpen = 'true';", "let isOpen = true;", "var isOpen = 1;", "bool isOpen = true;"],
+                "text": "A loja pode estar aberta ou fechada. Qual variável booleana representa corretamente esse estado?",
+                "options": [
+                    "const isOpen = 'true';",
+                    "let isOpen = true;",
+                    "var isOpen = 1;",
+                    "bool isOpen = true;"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Em JavaScript, o tipo booleano não usa aspas. 'true' (sem aspas) é o valor lógico verdadeiro. Usar 'let' permite fechar a loja depois mudando para false."
+                "explanation": "true e false são valores booleanos em JavaScript e não devem estar entre aspas."
             },
             {
-                "text": "O cliente adicionou um item de R$ 35,00 e a entrega custa R$ 5,00. Como garantir que o JS some os valores ao invés de juntar os textos?",
-                "options": ["Number(preco) + Number(frete)", "preco.concat(frete)", "parseString(preco + frete)", "preco && frete"],
+                "text": "Um valor veio de um input como texto e precisa ser somado a outro número. Qual opção converte o valor para Number?",
+                "options": [
+                    "Number(preco) + Number(frete)",
+                    "preco.concat(frete)",
+                    "parseString(preco + frete)",
+                    "preco && frete"
+                ],
                 "correctAnswer": 0,
-                "explanation": "Se os valores vierem de inputs HTML, eles chegam como texto (String). A função Number() os converte para números matemáticos antes de somar."
+                "explanation": "Valores de inputs normalmente são strings. Number() pode convertê-los para números antes de uma operação matemática."
             },
             {
-                "text": "Qual operador verifica se o valor total do pedido é estritamente igual (valor e tipo) a zero?",
-                "options": ["total = 0", "total == 0", "total === 0", "total != 0"],
+                "text": "O total precisa ser exatamente igual a zero, considerando valor e tipo. Qual operador usar?",
+                "options": [
+                    "total = 0",
+                    "total == 0",
+                    "total === 0",
+                    "total != 0"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O operador '===' verifica o valor e o tipo da variável. '==' verificaria apenas o valor."
+                "explanation": "=== compara valor e tipo, enquanto == faz uma comparação com conversão de tipo quando necessário."
             }
         ]
     },
@@ -79,28 +135,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como você acessa o nome da primeira rádio em uma array chamada 'estacoes'?",
-                "options": ["estacoes[1].nome", "estacoes[0].nome", "estacoes.primeiro.nome", "estacoes.nome[0]"],
+                "text": "Você tem const estacoes = [{ nome: \"Rock FM\" }, { nome: \"Pop FM\" }]. Como acessar o nome da primeira estação?",
+                "options": [
+                    "estacoes[1].nome",
+                    "estacoes[0].nome",
+                    "estacoes.primeiro.nome",
+                    "estacoes.nome[0]"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Os arrays em JavaScript são 'zero-indexed', ou seja, começam a contar a partir do 0. Logo, o primeiro item sempre será o índice [0]."
+                "explanation": "Arrays começam no índice 0. Portanto, o primeiro elemento está em [0]."
             },
             {
-                "text": "O usuário adicionou uma nova estação de rádio aos favoritos. Qual método insere esse item no final do Array?",
-                "options": ["estacoes.unshift(novaRadio)", "estacoes.pop(novaRadio)", "estacoes.add(novaRadio)", "estacoes.push(novaRadio)"],
+                "text": "O usuário adicionou uma nova rádio aos favoritos. Qual método coloca o item no final do array?",
+                "options": [
+                    "unshift()",
+                    "pop()",
+                    "add()",
+                    "push()"
+                ],
                 "correctAnswer": 3,
-                "explanation": "O método 'push()' adiciona um ou mais elementos ao final de um array."
+                "explanation": "push() adiciona elementos ao final de um array."
             },
             {
-                "text": "Você tem um objeto 'radioAtual = { nome: \"Sunset3D FM\", volume: 80 }'. Como alterar o volume para 100?",
-                "options": ["radioAtual[volume] = 100;", "radioAtual.volume = 100;", "radioAtual.set('volume', 100);", "radioAtual = { 100 };"],
+                "text": "Você tem radioAtual = { nome: \"Sunset FM\", volume: 80 }. Como mudar o volume para 100?",
+                "options": [
+                    "radioAtual[volume] = 100;",
+                    "radioAtual.volume = 100;",
+                    "radioAtual.set('volume', 100);",
+                    "radioAtual = { 100 };"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Para acessar ou alterar propriedades de um objeto, a forma mais comum é usando a 'dot notation' (notação de ponto)."
+                "explanation": "A notação de ponto permite acessar e alterar a propriedade volume."
             },
             {
-                "text": "Qual método cria um NOVO array apenas com as rádios que têm o gênero 'Rock'?",
-                "options": ["estacoes.map()", "estacoes.reduce()", "estacoes.filter(r => r.genero === 'Rock')", "estacoes.find(r => r.genero === 'Rock')"],
-                "correctAnswer": 2,
-                "explanation": "O método 'filter()' percorre o array e retorna um novo array apenas com os itens que passaram no teste lógico."
+                "text": "Você precisa criar uma nova lista contendo somente rádios do gênero Rock. Qual código resolve?",
+                "options": [
+                    "estacoes.map(r => r.genero === 'Rock')",
+                    "estacoes.filter(r => r.genero === 'Rock')",
+                    "estacoes.find(r => r.genero === 'Rock')",
+                    "estacoes.forEach(r => r.genero === 'Rock')"
+                ],
+                "correctAnswer": 1,
+                "explanation": "filter() cria um novo array apenas com os elementos que passam pela condição."
+            },
+            {
+                "text": "O que será armazenado em resultado? const numeros = [10, 20, 30]; const resultado = numeros.map(numero => numero * 2);",
+                "options": [
+                    "[10, 20, 30]",
+                    "[20, 40, 60]",
+                    "[12, 22, 32]",
+                    "60"
+                ],
+                "correctAnswer": 1,
+                "explanation": "map() transforma cada elemento e retorna um novo array. Neste caso, cada número é multiplicado por 2."
             }
         ]
     },
@@ -112,22 +199,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual é a sintaxe correta de uma Arrow Function que calcula o frete recebendo a 'distancia' como parâmetro?",
-                "options": ["const frete = function(distancia) => {}", "const frete = (distancia) => {}", "function frete(distancia) => {}", "arrow frete(distancia) {}"],
+                "text": "Qual é uma forma válida de declarar uma Arrow Function que recebe distancia?",
+                "options": [
+                    "const frete = function(distancia) => {}",
+                    "const frete = (distancia) => {}",
+                    "function frete(distancia) => {}",
+                    "arrow frete(distancia) {}"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A Arrow Function é definida armazenando uma estrutura com parênteses, a 'seta' (=>) e as chaves {} em uma variável."
+                "explanation": "Uma Arrow Function pode ser declarada com parâmetros entre parênteses seguidos por =>."
             },
             {
-                "text": "Se a distância for maior que 10km, a entrega é bloqueada. Como escrever essa condicional?",
-                "options": ["if (distancia > 10) { return false; }", "if (distancia >= 10) { return false; }", "if distancia > 10 return false", "when (distancia > 10) { false }"],
+                "text": "Se a entrega deve ser bloqueada quando a distância for maior que 10 km, qual condição representa essa regra?",
+                "options": [
+                    "if (distancia > 10) { return false; }",
+                    "if (distancia >= 10) { return false; }",
+                    "if distancia > 10 return false",
+                    "when (distancia > 10) { false }"
+                ],
                 "correctAnswer": 0,
-                "explanation": "A estrutura If verifica a condição. 'distancia > 10' garante que acima de 10km a função seja interrompida."
+                "explanation": "A condição > 10 bloqueia somente distâncias acima de 10 km."
             },
             {
-                "text": "Como arredondar o valor final do frete (ex: 12.876) para apenas duas casas decimais?",
-                "options": ["valor.round(2)", "Math.round(valor, 2)", "valor.toFixed(2)", "valor.decimals(2)"],
+                "text": "Qual opção formata um número para exibição com duas casas decimais?",
+                "options": [
+                    "valor.round(2)",
+                    "Math.round(valor, 2)",
+                    "valor.toFixed(2)",
+                    "valor.decimals(2)"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O método '.toFixed(2)' formata um número garantindo duas casas decimais, o que é ótimo para exibir preços."
+                "explanation": "toFixed(2) retorna uma string formatada com duas casas decimais."
+            },
+            {
+                "text": "O que a função retorna? function calcularFrete(distancia) { return distancia * 2; } const valor = calcularFrete(5);",
+                "options": [
+                    "5",
+                    "7",
+                    "10",
+                    "25"
+                ],
+                "correctAnswer": 2,
+                "explanation": "A função recebe 5 e multiplica por 2, retornando 10."
+            },
+            {
+                "text": "Você quer impedir entregas acima de 10 km. Qual chamada representa corretamente uma distância de 12 km?",
+                "options": [
+                    "calcularFrete(8)",
+                    "calcularFrete(10)",
+                    "calcularFrete(12)",
+                    "calcularFrete('km')"
+                ],
+                "correctAnswer": 2,
+                "explanation": "12 é maior que 10, então é a distância que deve acionar a regra de bloqueio."
             }
         ]
     },
@@ -139,22 +263,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como selecionar o botão de 'Comprar' que possui o ID 'btn-buy'?",
-                "options": ["document.querySelector('#btn-buy')", "document.getElement('.btn-buy')", "document.selectId('btn-buy')", "window.find('#btn-buy')"],
+                "text": "Você precisa selecionar o botão que possui id=\"btn-buy\". Qual código usar?",
+                "options": [
+                    "document.querySelector('#btn-buy')",
+                    "document.getElement('.btn-buy')",
+                    "document.selectId('btn-buy')",
+                    "window.find('#btn-buy')"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O 'querySelector' seleciona elementos baseados em seletores CSS. Como é um ID, usamos a hashtag (#)."
+                "explanation": "querySelector() aceita seletores CSS. Para um ID, usamos #."
             },
             {
-                "text": "Para fazer o botão mudar visualmente, como adicionamos a classe CSS 'active' a ele via JS?",
-                "options": ["botao.className += 'active'", "botao.style.class = 'active'", "botao.classList.add('active')", "botao.css('active')"],
+                "text": "O botão já possui outras classes e você quer adicionar active sem removê-las. Qual opção usar?",
+                "options": [
+                    "botao.className = 'active'",
+                    "botao.style.class = 'active'",
+                    "botao.classList.add('active')",
+                    "botao.css('active')"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'classList.add()' é a forma mais segura de adicionar uma classe sem sobrescrever o HTML existente."
+                "explanation": "classList.add() adiciona uma classe sem substituir as classes existentes."
             },
             {
-                "text": "Como alterar o texto de um título <h1> para 'Promoção de Açaí'?",
-                "options": ["titulo.value = 'Promoção de Açaí'", "titulo.textContent = 'Promoção de Açaí'", "titulo.html = 'Promoção de Açaí'", "titulo.text = 'Promoção de Açaí'"],
+                "text": "Como alterar somente o texto de um h1 selecionado?",
+                "options": [
+                    "titulo.value = 'Promoção de Açaí'",
+                    "titulo.textContent = 'Promoção de Açaí'",
+                    "titulo.html = 'Promoção de Açaí'",
+                    "titulo.text = 'Promoção de Açaí'"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A propriedade 'textContent' define o texto cru de um elemento, sendo mais seguro e performático que o 'innerHTML'."
+                "explanation": "textContent altera o conteúdo textual do elemento."
+            },
+            {
+                "text": "Depois de executar const titulo = document.querySelector('#titulo'); titulo.textContent = 'Bem-vindo!';, o que muda na página?",
+                "options": [
+                    "O elemento é removido",
+                    "O texto do elemento selecionado muda",
+                    "Um novo h1 é criado automaticamente",
+                    "Nada muda"
+                ],
+                "correctAnswer": 1,
+                "explanation": "textContent substitui o texto existente dentro do elemento selecionado."
+            },
+            {
+                "text": "Um botão deve receber a classe 'active' somente quando uma ação acontecer. Qual propriedade é mais adequada para manipular classes pelo JavaScript?",
+                "options": [
+                    "classList",
+                    "styleText",
+                    "attributesOnly",
+                    "cssRules"
+                ],
+                "correctAnswer": 0,
+                "explanation": "classList fornece métodos como add(), remove() e toggle() para trabalhar com as classes do elemento."
             }
         ]
     },
@@ -166,22 +327,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como você retorna a soma total dos valores de todos os produtos no estoque usando um único método de Array?",
-                "options": ["estoque.sum()", "estoque.map()", "estoque.reduce((total, item) => total + item.valor, 0)", "estoque.filter()"],
+                "text": "Você quer somar o valor de todos os produtos de um estoque usando um único método. Qual opção é adequada?",
+                "options": [
+                    "estoque.sum()",
+                    "estoque.map()",
+                    "estoque.reduce((total, item) => total + item.valor, 0)",
+                    "estoque.filter()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'reduce()' executa uma função redutora para cada elemento e acumula o resultado (neste caso, a variável 'total')."
+                "explanation": "reduce() permite acumular os valores dos itens em um único resultado."
             },
             {
-                "text": "O OCR leu uma nota fiscal e o texto veio como '  Item01  '. Como remover os espaços em branco das pontas?",
-                "options": ["texto.clean()", "texto.strip()", "texto.trim()", "texto.replace(' ', '')"],
+                "text": "Um OCR retornou '  Item01  '. Como remover os espaços do começo e do fim?",
+                "options": [
+                    "texto.clean()",
+                    "texto.strip()",
+                    "texto.trim()",
+                    "texto.replace(' ', '')"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O método 'trim()' remove os espaços em branco no início e no final de uma string, vital para limpar dados."
+                "explanation": "trim() remove espaços em branco das extremidades da string."
             },
             {
-                "text": "Como verificar se o texto extraído da nota fiscal contém a palavra 'Roteador'?",
-                "options": ["texto.includes('Roteador')", "texto.has('Roteador')", "texto.find('Roteador')", "texto.search('Roteador')"],
+                "text": "Como verificar se o texto contém a palavra 'Roteador'?",
+                "options": [
+                    "texto.includes('Roteador')",
+                    "texto.has('Roteador')",
+                    "texto.find('Roteador')",
+                    "texto.search('Roteador')"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O método 'includes()' retorna true ou false indicando se a string principal contém a palavra especificada."
+                "explanation": "includes() retorna true quando a string contém o trecho informado."
+            },
+            {
+                "text": "Qual será o resultado? const precos = [10, 20, 30]; const resultado = precos.map(p => p * 0.9);",
+                "options": [
+                    "[10, 20, 30]",
+                    "[9, 18, 27]",
+                    "[11, 21, 31]",
+                    "27"
+                ],
+                "correctAnswer": 1,
+                "explanation": "map() cria um novo array e cada preço é multiplicado por 0.9, representando 10% de desconto."
+            },
+            {
+                "text": "Você recebeu nomes com espaços extras antes de validar os dados. Qual combinação faz sentido para limpar e depois verificar um termo?",
+                "options": [
+                    "trim() e includes()",
+                    "push() e pop()",
+                    "map() e alert()",
+                    "reduce() e prompt()"
+                ],
+                "correctAnswer": 0,
+                "explanation": "trim() pode limpar as extremidades e includes() pode verificar se um texto contém determinado trecho."
             }
         ]
     },
@@ -193,22 +391,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como colocar um 'escutador' no botão 'Finalizar Pedido' para quando ele for clicado?",
-                "options": ["botao.onClick(function)", "botao.listen('click', function)", "botao.addEventListener('click', function)", "botao.onEvent('click', function)"],
+                "text": "Como colocar um escutador no botão para executar uma função quando ele for clicado?",
+                "options": [
+                    "botao.onClick(function)",
+                    "botao.listen('click', function)",
+                    "botao.addEventListener('click', function)",
+                    "botao.onEvent('click', function)"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'addEventListener' anexa eventos ao elemento selecionado sem sobrescrever eventos antigos."
+                "explanation": "addEventListener() registra uma função para responder a um evento, como click."
             },
             {
-                "text": "Ao submeter um formulário, a página recarrega automaticamente. Qual comando dentro do evento previne isso?",
-                "options": ["event.stop()", "event.halt()", "event.preventDefault()", "event.stopPropagation()"],
+                "text": "Um formulário recarrega a página ao ser enviado, mas você quer controlar o envio pelo JavaScript. Qual método impede o comportamento padrão?",
+                "options": [
+                    "event.stop()",
+                    "event.halt()",
+                    "event.preventDefault()",
+                    "event.stopPropagation()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'preventDefault()' cancela o comportamento padrão do navegador, impedindo que a página de recarregue."
+                "explanation": "preventDefault() cancela a ação padrão do navegador para aquele evento."
             },
             {
-                "text": "Para enviar os dados do pedido na URL do WhatsApp, qual função nativa codifica o texto?",
-                "options": ["URLFormat(texto)", "encodeURIComponent(texto)", "toURL(texto)", "parseURI(texto)"],
+                "text": "Você precisa colocar o texto de um pedido dentro de uma URL do WhatsApp. Qual função codifica caracteres especiais corretamente?",
+                "options": [
+                    "URLFormat(texto)",
+                    "encodeURIComponent(texto)",
+                    "toURL(texto)",
+                    "parseURI(texto)"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A função 'encodeURIComponent()' substitui espaços e caracteres especiais pela formatação correta de URLs (como '%20')."
+                "explanation": "encodeURIComponent() codifica um componente de URL, incluindo espaços e caracteres especiais."
+            },
+            {
+                "text": "Quando a função passada ao addEventListener('click', ...) será executada?",
+                "options": [
+                    "Quando o HTML for criado",
+                    "Quando ocorrer um clique no elemento",
+                    "Quando o navegador fechar",
+                    "Somente depois de um reload"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O evento click dispara a função quando o elemento recebe um clique."
+            },
+            {
+                "text": "Você quer impedir o envio automático de um formulário para poder validar os campos primeiro. Em qual evento normalmente chamaria preventDefault()?",
+                "options": [
+                    "submit",
+                    "load",
+                    "scroll",
+                    "mouseenter"
+                ],
+                "correctAnswer": 0,
+                "explanation": "O evento submit acontece quando o formulário é enviado e é um ponto adequado para controlar esse comportamento."
             }
         ]
     },
@@ -220,22 +455,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como você salva o tema escolhido pelo usuário (ex: 'dark') para a próxima visita?",
-                "options": ["localStorage.save('tema', 'dark')", "localStorage.setItem('tema', 'dark')", "browser.storage.tema = 'dark'", "sessionStorage.push('tema', 'dark')"],
+                "text": "Como salvar o tema 'dark' para a próxima visita usando LocalStorage?",
+                "options": [
+                    "localStorage.save('tema', 'dark')",
+                    "localStorage.setItem('tema', 'dark')",
+                    "browser.storage.tema = 'dark'",
+                    "sessionStorage.push('tema', 'dark')"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Usa-se 'setItem' passando a chave (nome) e o valor. Ele permanece salvo mesmo fechando o navegador."
+                "explanation": "setItem() salva um valor usando uma chave no LocalStorage."
             },
             {
-                "text": "O LocalStorage só aceita Strings de texto. Como salvar o array completo do carrinho de compras?",
-                "options": ["localStorage.setItem('carrinho', carrinho.toString())", "localStorage.setItem('carrinho', JSON.stringify(carrinho))", "localStorage.setItem('carrinho', Array.parse(carrinho))", "localStorage.setItem('carrinho', carrinho)"],
+                "text": "LocalStorage armazena strings. Como salvar um array de carrinho mantendo sua estrutura?",
+                "options": [
+                    "localStorage.setItem('carrinho', carrinho.toString())",
+                    "localStorage.setItem('carrinho', JSON.stringify(carrinho))",
+                    "localStorage.setItem('carrinho', Array.parse(carrinho))",
+                    "localStorage.setItem('carrinho', carrinho)"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O 'JSON.stringify()' pega o objeto ou array em JavaScript e o transforma em uma String JSON válida."
+                "explanation": "JSON.stringify() transforma o array em uma string JSON que pode ser armazenada."
             },
             {
-                "text": "Como recuperar os dados de texto do carrinho e transformá-los de volta em um Array real?",
-                "options": ["JSON.parse(localStorage.getItem('carrinho'))", "JSON.objectify(localStorage.getItem('carrinho'))", "Array.from(localStorage.getItem('carrinho'))", "localStorage.getObject('carrinho')"],
+                "text": "Como recuperar a string JSON do carrinho e transformá-la novamente em um array?",
+                "options": [
+                    "JSON.parse(localStorage.getItem('carrinho'))",
+                    "JSON.objectify(localStorage.getItem('carrinho'))",
+                    "Array.from(localStorage.getItem('carrinho'))",
+                    "localStorage.getObject('carrinho')"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O 'JSON.parse()' faz o inverso: ele lê um texto estruturado em JSON e reconstrói o Array nativo na memória do JS."
+                "explanation": "JSON.parse() converte uma string JSON de volta para uma estrutura JavaScript."
+            },
+            {
+                "text": "Depois de executar localStorage.setItem('tema', 'dark'), qual código recupera o valor?",
+                "options": [
+                    "localStorage.get('tema')",
+                    "localStorage.read('tema')",
+                    "localStorage.getItem('tema')",
+                    "localStorage.load('tema')"
+                ],
+                "correctAnswer": 2,
+                "explanation": "getItem() recupera o valor associado à chave informada."
+            },
+            {
+                "text": "Por que usamos JSON.stringify() antes de salvar um array no LocalStorage?",
+                "options": [
+                    "Porque LocalStorage aceita apenas números",
+                    "Porque transforma a estrutura em uma string JSON",
+                    "Porque apaga o array original",
+                    "Porque converte o array em HTML"
+                ],
+                "correctAnswer": 1,
+                "explanation": "LocalStorage trabalha com strings, e JSON.stringify() serializa arrays e objetos para esse formato."
             }
         ]
     },
@@ -247,22 +519,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual função nativa é utilizada para fazer requisições HTTP para APIs (como o ViaCEP)?",
-                "options": ["axios()", "ajax()", "fetch()", "get()"],
+                "text": "Qual função nativa é usada para fazer uma requisição HTTP para uma API como o ViaCEP?",
+                "options": [
+                    "axios()",
+                    "ajax()",
+                    "fetch()",
+                    "get()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'fetch()' é a API nativa dos navegadores modernos para realizar buscas assíncronas na rede."
+                "explanation": "fetch() é uma API nativa do JavaScript para realizar requisições de rede."
             },
             {
-                "text": "O fetch retorna uma Promise. Como 'esperamos' que essa Promise resolva antes de continuar o código?",
-                "options": ["Usando function e .wait()", "Usando async e await", "Usando defer e sync", "Usando timeout()"],
+                "text": "Como esperar uma Promise dentro de uma função assíncrona?",
+                "options": [
+                    "function e .wait()",
+                    "async e await",
+                    "defer e sync",
+                    "timeout()"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Adicionando 'async' na função, você ganha o direito de usar 'await' na frente da requisição, pausando a linha até os dados chegarem."
+                "explanation": "async permite usar await para aguardar a resolução de uma Promise."
             },
             {
-                "text": "Se a API estiver fora do ar, qual bloco de código captura esse erro sem quebrar o site?",
-                "options": ["if / else", "try / catch", "then / catch", "error / handler"],
+                "text": "Qual estrutura pode capturar um erro ao trabalhar com async/await?",
+                "options": [
+                    "if / else",
+                    "try / catch",
+                    "then / error",
+                    "error / handler"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Em funções async/await, envolvemos o código em 'try' (tentar). Se falhar, pula para o 'catch' (capturar)."
+                "explanation": "try contém o código que pode falhar e catch trata o erro caso ele aconteça."
+            },
+            {
+                "text": "Se a API do CEP estiver indisponível e o fetch falhar, em qual parte do try/catch você pode mostrar uma mensagem ao usuário?",
+                "options": [
+                    "try",
+                    "catch",
+                    "async",
+                    "await"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O catch é executado quando ocorre uma falha que é lançada durante a operação."
+            },
+            {
+                "text": "Por que usar await em uma requisição dentro de uma função async?",
+                "options": [
+                    "Para transformar a resposta em HTML automaticamente",
+                    "Para aguardar a Promise antes de continuar aquela sequência de código",
+                    "Para impedir qualquer erro da API",
+                    "Para tornar a requisição síncrona para todo o navegador"
+                ],
+                "correctAnswer": 1,
+                "explanation": "await pausa a execução daquela função assíncrona até a Promise ser resolvida ou rejeitada, sem bloquear o thread do navegador inteiro."
             }
         ]
     },
@@ -274,22 +583,59 @@
         "isMiniProject": true,
         "questions": [
             {
-                "text": "Para começar a desenhar no Canvas, qual é o primeiro método a ser chamado no JS?",
-                "options": ["canvas.start()", "canvas.getContext('2d')", "canvas.init('graphics')", "canvas.setRenderer('2d')"],
+                "text": "Para obter o contexto 2D de um Canvas e começar a desenhar, qual código usar?",
+                "options": [
+                    "canvas.start()",
+                    "canvas.getContext('2d')",
+                    "canvas.init('graphics')",
+                    "canvas.setRenderer('2d')"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O 'getContext('2d')' inicializa a API de desenho bidimensional e retorna o objeto que contém todos os métodos de pintura."
+                "explanation": "getContext('2d') retorna o contexto usado para desenhar em duas dimensões."
             },
             {
-                "text": "Como desenhar um retângulo sólido que representa uma barra do gráfico?",
-                "options": ["ctx.drawRect(x, y, width, height)", "ctx.rect(x, y, width, height)", "ctx.fillRect(x, y, width, height)", "ctx.createBox(x, y, width, height)"],
+                "text": "Qual método desenha um retângulo preenchido?",
+                "options": [
+                    "ctx.drawRect(x, y, width, height)",
+                    "ctx.rect(x, y, width, height)",
+                    "ctx.fillRect(x, y, width, height)",
+                    "ctx.createBox(x, y, width, height)"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O método 'fillRect' preenche um retângulo na tela utilizando as coordenadas e dimensões informadas."
+                "explanation": "fillRect() desenha um retângulo preenchido no contexto 2D."
             },
             {
-                "text": "Como apagar todo o conteúdo desenhado (útil para atualizar o gráfico com novos dados)?",
-                "options": ["canvas.clear()", "ctx.eraseAll()", "ctx.clearRect(0, 0, canvas.width, canvas.height)", "ctx.reset()"],
+                "text": "Como apagar toda a área desenhada do Canvas?",
+                "options": [
+                    "canvas.clear()",
+                    "ctx.eraseAll()",
+                    "ctx.clearRect(0, 0, canvas.width, canvas.height)",
+                    "ctx.reset()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'clearRect()' limpa pixels em uma área específica. Passar as dimensões totais do canvas apaga a tela inteira."
+                "explanation": "clearRect() limpa uma área do Canvas. Usar toda a largura e altura limpa a tela inteira."
+            },
+            {
+                "text": "Seu gráfico está acumulando desenhos antigos a cada atualização. Qual ação resolve o problema antes de desenhar novamente?",
+                "options": [
+                    "Salvar cada frame no LocalStorage",
+                    "Limpar o Canvas com clearRect()",
+                    "Criar um novo navegador",
+                    "Adicionar mais elementos HTML"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Limpar a área antes de desenhar o próximo estado evita que os desenhos anteriores permaneçam na tela."
+            },
+            {
+                "text": "Você quer representar uma barra de gráfico de 120 pixels de largura e 40 de altura começando em x=10 e y=20. Qual chamada faz isso?",
+                "options": [
+                    "ctx.fillRect(10, 20, 120, 40)",
+                    "ctx.fillRect(120, 40, 10, 20)",
+                    "ctx.rect(10, 20, 40, 120)",
+                    "ctx.drawBar(10, 20, 120, 40)"
+                ],
+                "correctAnswer": 0,
+                "explanation": "fillRect recebe x, y, largura e altura nessa ordem."
             }
         ]
     },
@@ -301,22 +647,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como você cria um objeto nativo que representa a data e hora exatas de agora?",
-                "options": ["Date.now()", "new Date()", "getDateTime()", "moment()"],
+                "text": "Como criar um objeto Date representando o momento atual?",
+                "options": [
+                    "Date.now()",
+                    "new Date()",
+                    "getDateTime()",
+                    "moment()"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A expressão 'new Date()' cria um objeto que guarda a data, hora, fuso e milissegundos exatos do momento em que foi chamado."
+                "explanation": "new Date() cria um objeto Date com a data e hora atuais."
             },
             {
-                "text": "A pizzaria abre às 18h. Qual método extrai apenas a HORA do objeto Date para fazermos o bloqueio?",
-                "options": ["data.getTime()", "data.getHour()", "data.getHours()", "data.extractTime()"],
+                "text": "Qual método retorna a hora local de um objeto Date?",
+                "options": [
+                    "getTime()",
+                    "getHour()",
+                    "getHours()",
+                    "extractTime()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O método 'getHours()' (no plural) retorna a hora local, variando de 0 a 23. Perfeito para verificar expedientes: if (hora < 18) { fechar() }."
+                "explanation": "getHours() retorna a hora local de 0 a 23."
             },
             {
-                "text": "Como formatar uma data automaticamente para o padrão brasileiro (DD/MM/AAAA) sem usar bibliotecas externas?",
-                "options": ["data.format('pt-BR')", "data.toLocaleDateString('pt-BR')", "data.toBR()", "data.parseDate()"],
+                "text": "Como formatar uma data para a localidade brasileira usando a API nativa?",
+                "options": [
+                    "data.format('pt-BR')",
+                    "data.toLocaleDateString('pt-BR')",
+                    "data.toBR()",
+                    "data.parseDate()"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O 'toLocaleDateString' formata a data nativamente seguindo as regras da localidade informada ('pt-BR')."
+                "explanation": "toLocaleDateString() aceita uma localidade e formata a data conforme suas regras."
+            },
+            {
+                "text": "Se hora = data.getHours() e hora < 18, o que uma regra de funcionamento pode fazer?",
+                "options": [
+                    "Liberar automaticamente qualquer pedido",
+                    "Bloquear ou informar que a loja ainda não abriu",
+                    "Apagar a data",
+                    "Transformar a hora em texto"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A condição pode ser usada para verificar se o horário está antes da abertura."
+            },
+            {
+                "text": "Você quer exibir uma data de forma localizada no Brasil sem instalar uma biblioteca. Qual recurso deve procurar?",
+                "options": [
+                    "Intl/Date APIs nativas",
+                    "Somente Math",
+                    "Somente LocalStorage",
+                    "Somente Canvas"
+                ],
+                "correctAnswer": 0,
+                "explanation": "O JavaScript possui APIs nativas de internacionalização e Date para trabalhar com datas e localidades."
             }
         ]
     },
@@ -328,22 +711,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual é a estrutura conhecida como 'Operador Ternário', usada para definir rapidamente se o login foi aceito ou não?",
-                "options": ["if login == true then 'OK' else 'ERRO'", "login ? 'OK' : 'ERRO'", "login => 'OK' || 'ERRO'", "switch(login) 'OK' 'ERRO'"],
+                "text": "Qual operador pode substituir um if/else simples para escolher entre dois valores?",
+                "options": [
+                    "if login == true then 'OK' else 'ERRO'",
+                    "login ? 'OK' : 'ERRO'",
+                    "login => 'OK' || 'ERRO'",
+                    "switch(login) 'OK' 'ERRO'"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O operador ternário (condição ? valorSeVerdadeiro : valorSeFalso) substitui If/Else simples em apenas uma linha."
+                "explanation": "O operador ternário segue a estrutura condição ? valorSeVerdadeiro : valorSeFalso."
             },
             {
-                "text": "O usuário esqueceu a senha no cadastro. Como forçar a parada do sistema e lançar um erro customizado na tela?",
-                "options": ["stop('Sem senha');", "return error('Sem senha');", "throw new Error('Sem senha');", "console.error('Sem senha');"],
+                "text": "Qual instrução lança um erro customizado?",
+                "options": [
+                    "stop('Sem senha');",
+                    "return error('Sem senha');",
+                    "throw new Error('Sem senha');",
+                    "console.error('Sem senha');"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O 'throw new Error()' interrompe imediatamente a execução da função e envia a mensagem para ser tratada no bloco 'catch'."
+                "explanation": "throw new Error() cria e lança um erro que pode ser tratado por um catch."
             },
             {
-                "text": "Regex: Você criou uma regra const regexEmail = /\\S+@\\S+\\.\\S+/. Qual método verifica se o input do usuário passa nessa regra?",
-                "options": ["regexEmail.test(input)", "regexEmail.verify(input)", "regexEmail.check(input)", "input.matchRegex(regexEmail)"],
+                "text": "Qual método verifica se uma string atende ao padrão de uma RegExp?",
+                "options": [
+                    "regexEmail.test(input)",
+                    "regexEmail.verify(input)",
+                    "regexEmail.check(input)",
+                    "input.matchRegex(regexEmail)"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O método '.test()' da API Regex retorna um booleano (true ou false) indicando se a string atende ao padrão da expressão regular."
+                "explanation": "O método test() retorna true ou false conforme a expressão regular corresponda ao texto."
+            },
+            {
+                "text": "Se login for true, qual será o resultado de const mensagem = login ? 'OK' : 'ERRO';?",
+                "options": [
+                    "true",
+                    "false",
+                    "OK",
+                    "ERRO"
+                ],
+                "correctAnswer": 2,
+                "explanation": "A condição é verdadeira, então o operador ternário escolhe 'OK'."
+            },
+            {
+                "text": "Você quer validar um campo de e-mail com uma RegExp e tomar uma decisão com base no resultado. O retorno de test() é mais adequado para qual tipo de decisão?",
+                "options": [
+                    "Uma condição true/false",
+                    "Um elemento HTML",
+                    "Um número aleatório",
+                    "Um objeto Date"
+                ],
+                "correctAnswer": 0,
+                "explanation": "test() retorna um booleano, ideal para usar em condições de validação."
             }
         ]
     },
@@ -355,22 +775,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual é a sintaxe correta para criar uma 'fábrica' de novos produtos no seu estoque?",
-                "options": ["function Produto {}", "class Produto {}", "create Produto {}", "object Produto {}"],
+                "text": "Qual sintaxe cria uma classe chamada Produto?",
+                "options": [
+                    "function Produto {}",
+                    "class Produto {}",
+                    "create Produto {}",
+                    "object Produto {}"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A palavra 'class' introduzida no ES6 permite criar modelos (templates) para instanciar vários objetos com as mesmas regras estruturais."
+                "explanation": "A palavra-chave class define uma classe em JavaScript."
             },
             {
-                "text": "Dentro de uma classe, qual é o nome do método especial executado automaticamente sempre que damos um 'new Produto()'?",
-                "options": ["init()", "start()", "constructor()", "setup()"],
+                "text": "Qual método especial é executado quando fazemos new Produto()?",
+                "options": [
+                    "init()",
+                    "start()",
+                    "constructor()",
+                    "setup()"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O método 'constructor' é onde inicializamos as propriedades daquele objeto específico assim que ele nasce."
+                "explanation": "constructor() é usado para inicializar uma nova instância da classe."
             },
             {
-                "text": "Como uma função dentro da classe Produto acessa a propriedade 'preco' do próprio objeto instanciado?",
-                "options": ["Produto.preco", "self.preco", "this.preco", "object.preco"],
+                "text": "Dentro de um método da classe, como acessar a propriedade preco da própria instância?",
+                "options": [
+                    "Produto.preco",
+                    "self.preco",
+                    "this.preco",
+                    "object.preco"
+                ],
                 "correctAnswer": 2,
-                "explanation": "A palavra-chave 'this' (este) refere-se ao próprio objeto executando o código. 'this.preco' pega o preço exclusivo daquela instância."
+                "explanation": "this referencia a instância que está executando o método."
+            },
+            {
+                "text": "O que acontece ao executar const produto = new Produto();?",
+                "options": [
+                    "Uma nova instância de Produto é criada",
+                    "A classe é apagada",
+                    "O navegador cria um banco de dados",
+                    "A função constructor nunca pode ser chamada"
+                ],
+                "correctAnswer": 0,
+                "explanation": "new cria uma nova instância da classe e executa seu constructor, quando definido."
+            },
+            {
+                "text": "Você quer criar vários produtos com a mesma estrutura, mas com valores diferentes. Qual recurso da OOP ajuda a modelar essa estrutura?",
+                "options": [
+                    "Uma classe",
+                    "Somente console.log()",
+                    "Somente localStorage",
+                    "Uma tag HTML"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Uma classe funciona como um modelo para criar várias instâncias com a mesma estrutura e comportamento."
             }
         ]
     },
@@ -382,16 +839,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual API nativa converte diretamente o número 15.5 para a string 'R$ 15,50' sem precisar fazer cálculos de vírgulas?",
-                "options": ["String.toMoney(15.5)", "Intl.NumberFormat", "Math.currency", "Number.toBRL"],
+                "text": "Qual API nativa pode formatar 15.5 como moeda brasileira?",
+                "options": [
+                    "String.toMoney(15.5)",
+                    "Intl.NumberFormat",
+                    "Math.currency",
+                    "Number.toBRL"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O objeto 'Intl.NumberFormat' é incrivelmente poderoso. Passando 'pt-BR' e {style: 'currency', currency: 'BRL'}, ele formata todo o valor de acordo com o padrão do Banco Central."
+                "explanation": "Intl.NumberFormat pode formatar números conforme uma localidade e opções de moeda."
             },
             {
-                "text": "O backend mandou o preço do açaí como '15,90' (com vírgula), mas o JS só calcula números com ponto. Como substituir?",
-                "options": ["preco.replace(',', '.')", "preco.swap(',', '.')", "preco.change(',', '.')", "preco.dot()"],
+                "text": "O backend enviou '15,90' e você precisa trocar a vírgula decimal por ponto antes de uma conversão numérica. Qual método usar?",
+                "options": [
+                    "preco.replace(',', '.')",
+                    "preco.swap(',', '.')",
+                    "preco.change(',', '.')",
+                    "preco.dot()"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O método 'replace' procura pela primeira string (vírgula) e a substitui pela segunda (ponto), tornando o valor operável matematicamente pelo motor V8."
+                "explanation": "replace() pode substituir a vírgula pelo ponto."
+            },
+            {
+                "text": "Qual configuração do Intl.NumberFormat representa moeda brasileira?",
+                "options": [
+                    "{ style: 'currency', currency: 'BRL' }",
+                    "{ money: 'Brazil' }",
+                    "{ format: 'real' }",
+                    "{ style: 'number', currency: 'BRL' }"
+                ],
+                "correctAnswer": 0,
+                "explanation": "style: 'currency' junto com currency: 'BRL' indica formatação monetária em reais."
+            },
+            {
+                "text": "Qual será o resultado de new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(15.5)?",
+                "options": [
+                    "15.5",
+                    "R$ 15,50",
+                    "BRL 15.5",
+                    "15,5 R$"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A API aplica a localidade pt-BR e a moeda BRL, apresentando o valor no formato monetário brasileiro."
+            },
+            {
+                "text": "Por que não é uma boa ideia tratar um preço como se fosse sempre um número antes de verificar sua origem?",
+                "options": [
+                    "Porque dados externos ou inputs podem chegar como strings e precisar de conversão",
+                    "Porque JavaScript não possui números",
+                    "Porque strings sempre são mais rápidas",
+                    "Porque Intl não funciona com números"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Dados vindos de inputs ou APIs podem ter formatos diferentes; é importante conhecer e normalizar o valor antes dos cálculos."
             }
         ]
     },
@@ -403,22 +903,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Ao criar um painel de web rádio (como a Radio Web Global), como instanciar o áudio via código puro?",
-                "options": ["const som = new Sound('radio.mp3')", "const som = document.loadAudio('radio.mp3')", "const som = new Audio('radio.mp3')", "const som = fetchAudio('radio.mp3')"],
+                "text": "Como criar um objeto de áudio usando uma URL de arquivo?",
+                "options": [
+                    "new Sound('radio.mp3')",
+                    "document.loadAudio('radio.mp3')",
+                    "new Audio('radio.mp3')",
+                    "fetchAudio('radio.mp3')"
+                ],
                 "correctAnswer": 2,
-                "explanation": "O construtor 'new Audio(url)' cria um elemento HTMLAudioElement em memória, pronto para ser manipulado e tocado, sem precisar de tag <audio> no HTML."
+                "explanation": "new Audio(url) cria um elemento de áudio que pode ser controlado pelo JavaScript."
             },
             {
-                "text": "Chegou um novo pedido no Delivery! Qual comando executa o arquivo de áudio de notificação que criamos?",
-                "options": ["som.play()", "som.start()", "som.run()", "som.trigger()"],
+                "text": "Qual método reproduz o áudio criado?",
+                "options": [
+                    "som.play()",
+                    "som.start()",
+                    "som.run()",
+                    "som.trigger()"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O método nativo '.play()' reproduz o áudio instanciado. Vale lembrar que os navegadores modernos exigem que o usuário tenha interagido com a tela antes de permitir sons."
+                "explanation": "play() solicita a reprodução do áudio."
             },
             {
-                "text": "O cliente clicou no botão de MUDO no painel de rádio. Como abaixar o volume do som para zero via JS?",
-                "options": ["som.volume = 0;", "som.mute = true;", "som.setVolume(0);", "som.level = 0;"],
+                "text": "Como colocar o volume do áudio em zero?",
+                "options": [
+                    "som.volume = 0;",
+                    "som.mute = true;",
+                    "som.setVolume(0);",
+                    "som.level = 0;"
+                ],
                 "correctAnswer": 0,
-                "explanation": "A propriedade 'volume' recebe um float entre 0.0 (mudo) e 1.0 (máximo). Definir 'som.volume = 0.5' deixaria em 50%."
+                "explanation": "A propriedade volume aceita valores entre 0 e 1; 0 representa volume mínimo."
+            },
+            {
+                "text": "Você criou const som = new Audio('aviso.mp3');. Qual comando tenta reproduzir o áudio?",
+                "options": [
+                    "som.play()",
+                    "som.start()",
+                    "som.run()",
+                    "Audio.start(som)"
+                ],
+                "correctAnswer": 0,
+                "explanation": "play() é o método usado para iniciar a reprodução."
+            },
+            {
+                "text": "O usuário clicou em Mudo. Qual valor de volume representa silêncio?",
+                "options": [
+                    "1",
+                    "0.5",
+                    "0",
+                    "100"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Na propriedade volume, 0 representa silêncio e 1 representa o volume máximo."
             }
         ]
     },
@@ -430,22 +967,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "O seu arquivo script.js ficou com 2000 linhas. Como você exporta a função 'calcularFrete' para um arquivo separado chamado frete.js?",
-                "options": ["send function calcularFrete", "export const calcularFrete", "module calcularFrete", "public calcularFrete"],
+                "text": "Como exportar uma função chamada calcularFrete de um módulo ES?",
+                "options": [
+                    "send function calcularFrete",
+                    "export const calcularFrete",
+                    "module calcularFrete",
+                    "public calcularFrete"
+                ],
                 "correctAnswer": 1,
-                "explanation": "A palavra-chave 'export' transforma aquela função ou variável em um módulo público que pode ser importado por outros arquivos JS."
+                "explanation": "A palavra-chave export disponibiliza uma função ou variável para ser importada por outro módulo."
             },
             {
-                "text": "Como você traz a função que foi exportada do arquivo 'frete.js' para o seu painel de delivery principal?",
-                "options": ["include { calcularFrete } from './frete.js';", "require('./frete.js').calcularFrete;", "import { calcularFrete } from './frete.js';", "load calcularFrete in './frete.js';"],
+                "text": "Como importar a função calcularFrete de './frete.js'?",
+                "options": [
+                    "include { calcularFrete } from './frete.js';",
+                    "require('./frete.js').calcularFrete;",
+                    "import { calcularFrete } from './frete.js';",
+                    "load calcularFrete in './frete.js';"
+                ],
                 "correctAnswer": 2,
-                "explanation": "No padrão moderno (ESM), usamos 'import { nomeDaFuncao } from path' para trazer partes isoladas do código de um arquivo para o outro, mantendo tudo organizado."
+                "explanation": "A sintaxe moderna de ES Modules usa import ... from."
             },
             {
-                "text": "Para que o navegador entenda que você está conectando vários arquivos JS importados, o que você deve adicionar na tag <script> do HTML?",
-                "options": ["type=\"module\"", "rel=\"import\"", "src=\"multiple\"", "format=\"esm\""],
+                "text": "Qual atributo informa ao navegador que o arquivo JavaScript usa módulos?",
+                "options": [
+                    "type=\"module\"",
+                    "rel=\"import\"",
+                    "src=\"multiple\"",
+                    "format=\"esm\""
+                ],
                 "correctAnswer": 0,
-                "explanation": "Colocar '<script src=\"script.js\" type=\"module\">' avisa ao navegador que ele deve habilitar as regras rígidas do ES Modules (como import/export local e segurança contra vazamento escopo global)."
+                "explanation": "type=\"module\" habilita o comportamento de módulos ES no script."
+            },
+            {
+                "text": "Se frete.js exporta const calcularFrete, qual é a finalidade do import no arquivo principal?",
+                "options": [
+                    "Trazer a função exportada para poder utilizá-la",
+                    "Apagar o arquivo frete.js",
+                    "Converter JS em CSS",
+                    "Criar automaticamente uma API"
+                ],
+                "correctAnswer": 0,
+                "explanation": "import conecta o módulo atual a uma exportação de outro módulo."
+            },
+            {
+                "text": "Qual vantagem prática de separar funções em módulos?",
+                "options": [
+                    "Organizar responsabilidades e facilitar a manutenção do código",
+                    "Fazer todo código executar duas vezes",
+                    "Impedir qualquer uso de funções",
+                    "Eliminar a necessidade de HTML"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Módulos ajudam a dividir o sistema em partes menores e mais organizadas."
             }
         ]
     },
@@ -457,22 +1031,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "O backend enviou uma lista de preços: [10, 20, 30]. Como usar o .map() para criar uma NOVA lista aplicando 10% de desconto em todos os itens?",
-                "options": ["precos.map(p => p - 10%)", "precos.map(p => p * 0.9)", "precos.forEach(p => p * 0.9)", "precos.reduce(p => p * 0.9)"],
+                "text": "Você tem [10, 20, 30] e quer aplicar 10% de desconto em cada valor criando um novo array. Qual opção usar?",
+                "options": [
+                    "precos.map(p => p - 10%)",
+                    "precos.map(p => p * 0.9)",
+                    "precos.forEach(p => p * 0.9)",
+                    "precos.reduce(p => p * 0.9)"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O método .map() itera sobre cada item e retorna um novo array. Multiplicar o valor por 0.9 é a forma matemática correta de calcular o valor com 10% de desconto no JavaScript."
+                "explanation": "map() cria um novo array e 0.9 representa 90% do valor original."
             },
             {
-                "text": "Ao renderizar o cardápio da pizzaria na tela, qual é a principal vantagem do .map() em relação ao .forEach()?",
-                "options": ["Ele é mais rápido para o processador.", "Ele altera o array original de forma permanente.", "Ele retorna um novo array, perfeito para encadear com .join('') e injetar no HTML.", "Ele não precisa de arrow functions."],
+                "text": "Qual é uma vantagem do map() em relação ao forEach() quando você precisa de uma nova lista?",
+                "options": [
+                    "map() sempre é mais rápido",
+                    "map() altera obrigatoriamente o array original",
+                    "map() retorna um novo array",
+                    "map() não aceita funções"
+                ],
                 "correctAnswer": 2,
-                "explanation": "Diferente do .forEach() que não retorna nada ('undefined'), o .map() retorna um novo array. Você mapeia objetos para strings HTML (`<li>${item}</li>`) e usa o .join('') para jogar tudo na tela de uma vez."
+                "explanation": "map() retorna um novo array com os resultados produzidos pela função."
             },
             {
-                "text": "Você mapeou um array de objetos complexos de produtos usando: `produtos.map(p => p.nome)`. O que o novo array conterá?",
-                "options": ["Os objetos originais inalterados.", "Apenas os nomes dos produtos em formato de string.", "Um erro de sintaxe estrutural.", "O tamanho total do array."],
+                "text": "O que resulta de produtos.map(p => p.nome)?",
+                "options": [
+                    "Os objetos originais",
+                    "Um array contendo os nomes",
+                    "Um número com o tamanho do array",
+                    "Um erro obrigatório"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Você extraiu apenas a propriedade 'nome'. O .map() vai descartar o resto do objeto e criar um array limpo contendo apenas as strings com os nomes (ex: ['Modem', 'Roteador', 'Cabo'])."
+                "explanation": "A função retorna somente p.nome para cada produto, formando um novo array de strings."
+            },
+            {
+                "text": "Qual será o resultado? const precos = [20, 30]; const novos = precos.map(p => p + 5);",
+                "options": [
+                    "[20, 30]",
+                    "[25, 35]",
+                    "[25, 30]",
+                    "55"
+                ],
+                "correctAnswer": 1,
+                "explanation": "map() aplica p + 5 a cada item e retorna [25, 35]."
+            },
+            {
+                "text": "Você precisa renderizar vários produtos e transformar cada objeto em uma string HTML. Qual método é apropriado para produzir uma nova lista de strings?",
+                "options": [
+                    "map()",
+                    "pop()",
+                    "push()",
+                    "find()"
+                ],
+                "correctAnswer": 0,
+                "explanation": "map() transforma cada item e retorna um novo array com os resultados."
             }
         ]
     },
@@ -484,22 +1095,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Em um array de números [5, 10, 15], o que os parâmetros (acumulador, atual) do .reduce() representam na PRIMEIRA repetição, caso você não passe um valor inicial?",
-                "options": ["O acumulador é 5 e o atual é 10.", "Ambos os valores começam como 5.", "O acumulador começa em 0 e o atual é 5.", "O acumulador é o array completo."],
+                "text": "Em [5, 10, 15], usando reduce sem valor inicial, quais são acumulador e atual na primeira chamada?",
+                "options": [
+                    "5 e 10",
+                    "5 e 5",
+                    "0 e 5",
+                    "o array completo"
+                ],
                 "correctAnswer": 0,
-                "explanation": "Se você não passar um 'valor inicial' após a função do reduce, o acumulador assume automaticamente o primeiro valor do array (5), e a iteração começa no segundo elemento (10)."
+                "explanation": "Sem valor inicial, o primeiro elemento vira o acumulador e a iteração começa no segundo elemento."
             },
             {
-                "text": "Para calcular o valor final de um carrinho onde cada item possui quantidade, ex: `{preco: 20, qtd: 2}`, qual é a sintaxe correta e mais segura do reduce?",
-                "options": ["carrinho.reduce((acc, item) => acc + item.preco, 0)", "carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0)", "carrinho.reduce((item) => item.preco * item.qtd)", "carrinho.map().reduce()"],
+                "text": "Para calcular o total de um carrinho com preco e qtd, qual reduce está correto?",
+                "options": [
+                    "carrinho.reduce((acc, item) => acc + item.preco, 0)",
+                    "carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0)",
+                    "carrinho.reduce(item => item.preco * item.qtd)",
+                    "carrinho.map().reduce()"
+                ],
                 "correctAnswer": 1,
-                "explanation": "Como estamos lidando com objetos (e não números soltos), o ', 0' no final é OBRIGATÓRIO para forçar o acumulador a nascer como um número zero. Dentro, multiplicamos o preço pela quantidade do item atual."
+                "explanation": "Cada item deve contribuir com preco multiplicado por quantidade, e o acumulador começa em 0."
             },
             {
-                "text": "O método .reduce() serve estritamente para somar números?",
-                "options": ["Sim, é uma função exclusivamente matemática do JS.", "Não, ele pode acumular e construir novos arrays, objetos e até concatenar strings complexas.", "Sim, mas aceita apenas números inteiros (int).", "Não, ele serve apenas para reduzir o tamanho de um array pela metade."],
+                "text": "reduce() serve somente para somar números?",
+                "options": [
+                    "Sim, exclusivamente",
+                    "Não, ele pode acumular valores e construir outras estruturas",
+                    "Sim, apenas inteiros",
+                    "Não, apenas reduz o tamanho do array pela metade"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O .reduce() é o verdadeiro 'canivete suíço' dos arrays. Você pode usá-lo para agrupar objetos por categoria em um novo objeto, transformar matrizes, entre muitas outras arquiteturas avançadas de dados."
+                "explanation": "reduce() é uma ferramenta geral de acumulação e pode produzir números, strings, objetos, arrays e outras estruturas."
+            },
+            {
+                "text": "Qual será o resultado? const numeros = [5, 10, 15]; const total = numeros.reduce((acc, n) => acc + n, 0);",
+                "options": [
+                    "15",
+                    "20",
+                    "30",
+                    "35"
+                ],
+                "correctAnswer": 2,
+                "explanation": "O acumulador começa em 0 e soma 5, 10 e 15, resultando em 30."
+            },
+            {
+                "text": "Você precisa transformar vários itens de um carrinho em um único valor total. Qual conceito do reduce está sendo usado?",
+                "options": [
+                    "Acumulação",
+                    "Seleção de um único elemento",
+                    "Ordenação automática",
+                    "Manipulação do DOM"
+                ],
+                "correctAnswer": 0,
+                "explanation": "reduce() percorre os itens e acumula os resultados em um único valor ou estrutura."
             }
         ]
     },
@@ -511,22 +1159,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Qual é o objeto nativo do JavaScript que nos dá acesso à localização do usuário?",
-                "options": ["window.gps", "navigator.geolocation", "document.location", "browser.maps"],
+                "text": "Qual objeto nativo permite acessar a localização do usuário?",
+                "options": [
+                    "window.gps",
+                    "navigator.geolocation",
+                    "document.location",
+                    "browser.maps"
+                ],
                 "correctAnswer": 1,
-                "explanation": "O objeto 'navigator.geolocation' é a interface padrão da Web API para acessar dados de posicionamento do dispositivo, desde que o usuário conceda permissão."
+                "explanation": "navigator.geolocation fornece a API de geolocalização do navegador."
             },
             {
-                "text": "O método getCurrentPosition() é assíncrono e recebe funções de callback (sucesso e erro). Como você captura as coordenadas de latitude e longitude se der certo?",
-                "options": ["posicao.coords.latitude", "posicao.lat", "posicao.gps.latitude", "posicao.get('latitude')"],
+                "text": "Onde ficam latitude e longitude no objeto de posição recebido pelo callback de sucesso?",
+                "options": [
+                    "posicao.coords.latitude e posicao.coords.longitude",
+                    "posicao.lat e posicao.long",
+                    "posicao.gps.latitude",
+                    "posicao.get('latitude')"
+                ],
                 "correctAnswer": 0,
-                "explanation": "No callback de sucesso, a API retorna um objeto GeolocationPosition. As propriedades exatas ficam dentro do sub-objeto 'coords'."
+                "explanation": "As coordenadas ficam dentro da propriedade coords."
             },
             {
-                "text": "O que acontece se o cliente clicar em 'Bloquear' quando o navegador pedir acesso à localização?",
-                "options": ["O site fecha automaticamente.", "O JS burla o bloqueio e pega pelo IP.", "O callback de erro é acionado, retornando um código de permissão negada.", "O navegador trava na tela de carregamento."],
+                "text": "O que acontece se o usuário negar a permissão de localização?",
+                "options": [
+                    "O site fecha",
+                    "O JavaScript burla o bloqueio",
+                    "O callback de erro pode ser acionado",
+                    "O navegador trava"
+                ],
                 "correctAnswer": 2,
-                "explanation": "A segurança web impede o acesso forçado. O callback de erro (segundo parâmetro do getCurrentPosition) é disparado, permitindo que você mostre um aviso amigável pedindo o CEP manualmente."
+                "explanation": "A API respeita a permissão do usuário e fornece informações de erro quando o acesso é negado."
+            },
+            {
+                "text": "Por que um sistema de entrega deve tratar o erro da geolocalização?",
+                "options": [
+                    "Para oferecer uma alternativa, como pedir o CEP manualmente",
+                    "Para ignorar a escolha do usuário",
+                    "Para obter a localização escondida",
+                    "Para desligar o navegador"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Se a localização não estiver disponível, o sistema pode oferecer uma alternativa de preenchimento manual."
+            },
+            {
+                "text": "Qual dado é mais diretamente útil para representar a posição recebida pela Geolocation API?",
+                "options": [
+                    "latitude e longitude",
+                    "nome do navegador e versão",
+                    "largura e altura da tela",
+                    "valor do LocalStorage"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Latitude e longitude são as coordenadas usadas para representar a posição."
             }
         ]
     },
@@ -538,22 +1223,59 @@
         "isMiniProject": true,
         "questions": [
             {
-                "text": "Para criar um loop infinito que atualiza a tela de um jogo suavemente a 60 FPS, qual função nativa substitui o antigo setInterval()?",
-                "options": ["requestAnimationFrame()", "setGameLoop()", "canvas.animate()", "window.loop()"],
+                "text": "Qual função é indicada para criar um loop de animação sincronizado com a atualização do navegador?",
+                "options": [
+                    "requestAnimationFrame()",
+                    "setGameLoop()",
+                    "canvas.animate()",
+                    "window.loop()"
+                ],
                 "correctAnswer": 0,
-                "explanation": "O 'requestAnimationFrame' avisa ao navegador que você deseja realizar uma animação, sincronizando a execução com a taxa de atualização do monitor, poupando bateria e processamento."
+                "explanation": "requestAnimationFrame() agenda a próxima atualização de animação de forma adequada ao navegador."
             },
             {
-                "text": "No início de cada novo frame (quadro) do seu jogo, qual é a primeira coisa que você deve fazer no Canvas antes de desenhar o personagem na nova posição?",
-                "options": ["Mudar a cor de fundo.", "Salvar o frame no LocalStorage.", "Apagar a tela inteira com ctx.clearRect().", "Aumentar o XP do jogador."],
-                "correctAnswer": 2,
-                "explanation": "Se você não usar o 'clearRect()' para limpar o quadro anterior, o rastro do personagem ficará marcado na tela, criando um efeito de borrão em vez de movimento."
+                "text": "Por que limpar o Canvas antes de desenhar a nova posição do personagem?",
+                "options": [
+                    "Para remover o frame anterior e evitar rastros",
+                    "Para salvar o frame",
+                    "Para aumentar XP",
+                    "Para impedir o teclado"
+                ],
+                "correctAnswer": 0,
+                "explanation": "clearRect() pode apagar o desenho anterior antes de renderizar o próximo frame."
             },
             {
-                "text": "Como você detecta uma colisão simples (AABB) entre dois quadrados (ex: o carro do jogador e um obstáculo na rodovia)?",
-                "options": ["Usando a API ctx.checkCollision()", "Comparando se a distância entre os eixos X e Y de ambos se sobrepõem matematicamente.", "Checando se eles têm a mesma cor.", "Verificando o tamanho da imagem carregada."],
-                "correctAnswer": 1,
-                "explanation": "No Canvas puro, colisões são pura matemática. Verificamos se o lado direito do quadrado A passou do lado esquerdo do quadrado B, e assim por diante nos eixos X e Y."
+                "text": "Em uma colisão AABB entre dois retângulos, o que é comparado?",
+                "options": [
+                    "Sobreposição das posições e dimensões nos eixos",
+                    "Somente a cor",
+                    "Somente o tamanho da imagem",
+                    "Somente o nome dos objetos"
+                ],
+                "correctAnswer": 0,
+                "explanation": "A colisão AABB verifica matematicamente se as áreas dos retângulos se sobrepõem nos eixos X e Y."
+            },
+            {
+                "text": "Um personagem está deixando um rastro durante o movimento. Qual correção faz sentido dentro do loop?",
+                "options": [
+                    "ctx.clearRect(0, 0, canvas.width, canvas.height) antes de desenhar",
+                    "localStorage.clear() a cada frame",
+                    "requestAnimationFrame.cancel()",
+                    "recarregar a página"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Limpar o Canvas antes de desenhar o novo frame remove os pixels do frame anterior."
+            },
+            {
+                "text": "Qual sequência representa melhor um loop simples de jogo?",
+                "options": [
+                    "limpar → atualizar estado → desenhar → solicitar próximo frame",
+                    "desenhar → apagar página → salvar no banco",
+                    "salvar LocalStorage → recarregar → desenhar",
+                    "criar HTML → fechar Canvas → parar"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Um loop básico normalmente limpa a tela, atualiza o estado, renderiza e agenda o próximo frame."
             }
         ]
     },
@@ -565,16 +1287,59 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Em bancos de dados NoSQL baseados em documentos, os dados são armazenados de forma muito parecida com qual estrutura nativa do JavaScript?",
-                "options": ["Arrays (Vetores)", "Functions (Funções)", "Objects (Objetos JSON)", "Strings de Texto"],
+                "text": "Em um banco NoSQL baseado em documentos, qual estrutura JavaScript se aproxima do formato de um documento?",
+                "options": [
+                    "Array",
+                    "Function",
+                    "Object",
+                    "String"
+                ],
                 "correctAnswer": 2,
-                "explanation": "Bancos NoSQL armazenam dados no formato de documentos estruturados como Objetos JSON reais (chaves e valores), o que torna a integração com o front-end JavaScript extremamente natural."
+                "explanation": "Documentos NoSQL podem representar dados estruturados como objetos de chave e valor, semelhantes a objetos JavaScript."
             },
             {
-                "text": "Ao enviar um novo pedido finalizado para o banco de dados na nuvem, qual tipo de operação nós estamos realizando?",
-                "options": ["Síncrona (trava a tela até salvar)", "Assíncrona (Promise/Await)", "Looping contínuo", "Manipulação de DOM"],
-                "correctAnswer": 1,
-                "explanation": "A comunicação com a rede sempre deve ser assíncrona. Usamos 'await' para que o navegador não congele enquanto o banco de dados confirma que o pedido foi salvo com sucesso."
+                "text": "Ao enviar um pedido para um banco na nuvem, por que a operação normalmente é tratada de forma assíncrona?",
+                "options": [
+                    "Porque envolve comunicação de rede e pode demorar",
+                    "Porque JavaScript não possui funções",
+                    "Porque o DOM exige isso",
+                    "Porque arrays só funcionam assim"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Comunicações de rede podem levar tempo, então APIs modernas usam operações assíncronas para não bloquear a interface."
+            },
+            {
+                "text": "Você precisa enviar um novo pedido para o banco e aguardar a confirmação antes de mostrar 'salvo'. Qual recurso combina bem com essa tarefa?",
+                "options": [
+                    "async/await",
+                    "somente CSS",
+                    "classList",
+                    "Canvas"
+                ],
+                "correctAnswer": 0,
+                "explanation": "async/await facilita escrever código que aguarda uma Promise, como uma operação de rede."
+            },
+            {
+                "text": "Por que é importante tratar possíveis erros ao salvar dados na nuvem?",
+                "options": [
+                    "A rede ou o serviço podem falhar e o usuário precisa receber um retorno adequado",
+                    "Porque todo banco sempre falha",
+                    "Para impedir qualquer Promise",
+                    "Para transformar o banco em LocalStorage"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Operações externas podem falhar; tratar erros permite informar o usuário e tomar uma decisão adequada."
+            },
+            {
+                "text": "Um pedido foi salvo e a aplicação precisa atualizar a interface somente depois da confirmação. Qual abordagem faz mais sentido?",
+                "options": [
+                    "Aguardar a Promise da operação de gravação e depois atualizar a interface",
+                    "Atualizar antes e nunca verificar o resultado",
+                    "Recarregar a página várias vezes",
+                    "Ignorar a resposta do banco"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Aguardar a conclusão da operação permite atualizar a interface de acordo com o resultado real da gravação."
             }
         ]
     }

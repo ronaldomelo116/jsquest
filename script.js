@@ -630,6 +630,8 @@ let currentChallenge = null;
 //sistema de abas
 
 navJourney.addEventListener('click', () => {
+    somClick.currentTime = 0;
+    somClick.play();
     navJourney.classList.add('active');
     navPlayground.classList.remove('active');
     dashboard.classList.remove('hidden');
@@ -638,6 +640,8 @@ navJourney.addEventListener('click', () => {
 });
 
 navPlayground.addEventListener('click', () => {
+    somClick.currentTime = 0;
+    somClick.play();
     navPlayground.classList.add('active');
     navJourney.classList.remove('active');
     dashboard.classList.add('hidden');

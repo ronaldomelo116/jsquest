@@ -1,6 +1,6 @@
 # 🕹️ JS Quest - Plataforma de Gamificação Educacional
 
-![Preview do Projeto](https://via.placeholder.com/1200x600?text=JS+Quest+-+Aprenda+JavaScript+Jogando)
+![Preview do Projeto](https://github.com/ronaldomelo116/jsquest/blob/main/previewjsquest.png?raw=true)
 
 Uma aplicação web gamificada inspirada em plataformas educacionais modernas (como Duolingo e Mimo). O **JS Quest** foi desenvolvido para testar e aprimorar conhecimentos em JavaScript, abordando desde os fundamentos da linguagem até simulações de projetos reais de mercado (sistemas de delivery, controle de estoque, integrações de APIs e muito mais).
 

@@ -1,5 +1,38 @@
 [
     {
+        "id": 0,
+        "title": "Introdução: O Universo do JavaScript",
+        "description": "Conceitos básicos sobre o que a linguagem faz e o seu papel na web.",
+        "icon": "bi-rocket-takeoff",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "JavaScript é usado para fazer sites dinâmicos, criar aplicativos móveis e jogos, processar dados e muito mais! O JavaScript torna as páginas da web e as aplicações…",
+                "options": ["Estruturadas", "Coloridas", "Interativas", "Estáticas"],
+                "correctAnswer": 2,
+                "explanation": "O HTML cria a estrutura (esqueleto), o CSS adiciona as cores (roupa), e o JavaScript é o 'músculo' que traz a interatividade e a inteligência para a aplicação."
+            },
+            {
+                "text": "Onde o código JavaScript pode ser executado atualmente?",
+                "options": ["Apenas em navegadores (Google Chrome, Edge, Safari).", "Apenas em servidores na nuvem.", "Em navegadores, servidores (Node.js) e até em celulares (Mobile).", "Somente dentro de bancos de dados."],
+                "correctAnswer": 2,
+                "explanation": "O JavaScript evoluiu para se tornar uma linguagem universal! Hoje ele domina tanto o Front-end (telas) quanto o Back-end (servidores com Node.js) e até o desenvolvimento mobile."
+            },
+            {
+                "text": "Qual tag HTML é utilizada para conectar o seu arquivo de código JavaScript (script.js) à página web?",
+                "options": ["<js src=\"script.js\">", "<script src=\"script.js\"></script>", "<link rel=\"javascript\" href=\"script.js\">", "<code src=\"script.js\">"],
+                "correctAnswer": 1,
+                "explanation": "A tag <script> é a forma padrão de carregar códigos no navegador. O atributo 'src' (source) aponta o caminho para o seu arquivo .js."
+            },
+            {
+                "text": "Quando você está programando e precisa ver o resultado de uma variável ou encontrar um erro nos bastidores, qual comando você usa para imprimir mensagens que o usuário comum não vê?",
+                "options": ["print('Olá');", "document.write('Olá');", "console.log('Olá');", "show('Olá');"],
+                "correctAnswer": 2,
+                "explanation": "O 'console.log()' é o melhor amigo do desenvolvedor! Ele imprime mensagens na aba Console (F12) do navegador, sendo a principal forma de testar lógicas e caçar bugs (erros) no código."
+            }
+        ]
+    },
+    {
         "id": 1,
         "title": "Fundamentos: Sistema de Delivery",
         "description": "Variáveis, Tipos e Operadores em um App de Pizzaria.",

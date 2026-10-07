@@ -1342,5 +1342,581 @@
                 "explanation": "Aguardar a conclusão da operação permite atualizar a interface de acordo com o resultado real da gravação."
             }
         ]
+    },
+    {
+        "id": 21,
+        "title": "Escopo e Contexto: Controlando Visibilidade",
+        "description": "Compreendendo let, const, var e como o escopo afeta suas variáveis.",
+        "icon": "bi-bullseye",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Se você declarar uma variável com `let` dentro de um bloco `if`, onde essa variável poderá ser acessada?",
+                "options": [
+                    "Em qualquer lugar do código (Escopo Global)",
+                    "Apenas dentro desse bloco `if` (Escopo de Bloco)",
+                    "Em qualquer lugar dentro da função que contém o `if`",
+                    "Apenas no início do arquivo"
+                ],
+                "correctAnswer": 1,
+                "explanation": "`let` e `const` possuem escopo de bloco, o que significa que só existem dentro das chaves `{}` onde foram declaradas."
+            },
+            {
+                "text": "O que o seguinte código imprimirá no console? `var taxa = 10; if (true) { var taxa = 20; } console.log(taxa);`",
+                "options": [
+                    "10",
+                    "20",
+                    "undefined",
+                    "Erro de sintaxe"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A palavra-chave `var` não tem escopo de bloco. A reatribuição dentro do `if` altera a variável global `taxa`."
+            },
+            {
+                "text": "Observe o código: `console.log(cliente); var cliente = 'João';`. Qual será o resultado?",
+                "options": [
+                    "João",
+                    "Erro: cliente is not defined",
+                    "undefined",
+                    "null"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Devido ao *hoisting*, a declaração da variável `var cliente` é movida para o topo, mas sua inicialização (`'João'`) não. Logo, o valor impresso é `undefined`."
+            },
+            {
+                "text": "No contexto de um carrinho de compras, por que é mais seguro iterar com `let` em um loop `for (let i = 0; ...)` do que com `var`?",
+                "options": [
+                    "`let` é mais rápido que `var`.",
+                    "`let` cria um escopo fechado para cada iteração do loop, evitando vazamento do contador.",
+                    "`var` não funciona em loops.",
+                    "`let` impede que os itens do carrinho sejam modificados."
+                ],
+                "correctAnswer": 1,
+                "explanation": "Ao usar `let` num loop, cada repetição cria um novo escopo de bloco. Isso é crucial quando se usam callbacks (como botões de exclusão), garantindo que cada botão faça referência ao índice correto."
+            },
+            {
+                "text": "Analise o código: `const total = 50; function atualizar() { const total = 100; console.log(total); } atualizar(); console.log(total);`. Qual será a saída?",
+                "options": [
+                    "100 e 100",
+                    "50 e 50",
+                    "100 e 50",
+                    "Erro: total já foi declarado"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Isso é chamado de *shadowing*. A variável `total` dentro da função ofusca a variável global. O primeiro log imprime o valor local (100) e o segundo o valor global (50)."
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "title": "Truthy, Falsy e Operadores Avançados",
+        "description": "Explorando a conversão booleana implícita e operadores lógicos modernos.",
+        "icon": "bi-magic",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual dos seguintes valores é considerado *Falsy* em JavaScript?",
+                "options": [
+                    "\"0\" (string com o número zero)",
+                    "[] (array vazio)",
+                    "{} (objeto vazio)",
+                    "\"\" (string vazia)"
+                ],
+                "correctAnswer": 3,
+                "explanation": "Em JavaScript, strings vazias, `0`, `null`, `undefined`, `NaN` e `false` são avaliados como falsos. Arrays, objetos vazios e strings não vazias (mesmo \"0\") são Truthy."
+            },
+            {
+                "text": "O que será armazenado na variável `usuario`? `const nome = \"\"; const usuario = nome || \"Visitante\";`",
+                "options": [
+                    "\"\"",
+                    "\"Visitante\"",
+                    "undefined",
+                    "true"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O operador lógico OR (`||`) retorna o primeiro valor Truthy. Como `nome` é uma string vazia (Falsy), a expressão avalia o lado direito."
+            },
+            {
+                "text": "Se você precisa verificar se o total do carrinho existe de forma segura (evitando erro caso o objeto seja undefined), qual operador é recomendado?",
+                "options": [
+                    "carrinho && carrinho.total",
+                    "carrinho?.total",
+                    "carrinho ?? total",
+                    "carrinho || total"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O *Optional Chaining* (`?.`) permite acessar propriedades aninhadas de forma segura. Se `carrinho` for `null` ou `undefined`, retorna `undefined` sem quebrar o código."
+            },
+            {
+                "text": "Num painel de controle, o número de acessos pode ser `0`. Como você garante que o valor `0` seja exibido, em vez de um fallback como \"Sem acessos\"?",
+                "options": [
+                    "`const display = acessos || \"Sem acessos\";`",
+                    "`const display = acessos && \"Sem acessos\";`",
+                    "`const display = acessos ?? \"Sem acessos\";`",
+                    "`const display = acessos ? acessos : \"Sem acessos\";`"
+                ],
+                "correctAnswer": 2,
+                "explanation": "O *Nullish Coalescing Operator* (`??`) retorna o operando direito APENAS se o esquerdo for `null` ou `undefined`. Assim, o valor válido `0` é respeitado, diferente do operador `||` que o trataria como Falsy."
+            },
+            {
+                "text": "Analise a expressão: `const flag = (false || 0 || \"\") ?? \"Padrão\";`. Qual é o valor de `flag`?",
+                "options": [
+                    "\"Padrão\"",
+                    "\"\"",
+                    "0",
+                    "false"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A expressão `(false || 0 || \"\")` resolve para a última condição Falsy, que é `\"\"`. Como `\"\"` não é `null` nem `undefined`, o operador `??` não avalia o lado direito, retornando a string vazia."
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "title": "Destructuring, Spread e Rest",
+        "description": "Extraindo e espalhando dados com sintaxe moderna e limpa.",
+        "icon": "bi-arrows-expand",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Dado o array `const cores = ['vermelho', 'azul', 'verde']`, como extrair a primeira cor para uma variável e ignorar o resto?",
+                "options": [
+                    "const { cor1 } = cores;",
+                    "const [cor1] = cores;",
+                    "const cor1 = ...cores;",
+                    "const cor1 = cores.shift();"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O *Array Destructuring* usa colchetes `[]` e mapeia variáveis para os valores do array pela posição do índice."
+            },
+            {
+                "text": "Como mesclar dois arrays `arr1` e `arr2` num novo array usando o operador Spread?",
+                "options": [
+                    "const novo = [...arr1, ...arr2];",
+                    "const novo = arr1.concat(...arr2);",
+                    "const novo = [arr1, arr2];",
+                    "const novo = ...arr1 + ...arr2;"
+                ],
+                "correctAnswer": 0,
+                "explanation": "O *Spread Operator* (`...`) 'espalha' os elementos iteráveis de ambos os arrays dentro dos novos colchetes."
+            },
+            {
+                "text": "No objeto `const user = { id: 5, nome: \"Ana\" }`, como extrair a propriedade `nome` e renomeá-la para `cliente` numa única linha?",
+                "options": [
+                    "const { nome = cliente } = user;",
+                    "const { cliente: nome } = user;",
+                    "const { nome: cliente } = user;",
+                    "const cliente = user.nome;"
+                ],
+                "correctAnswer": 2,
+                "explanation": "No Destructuring de objetos, usamos dois pontos `:` para atribuir a propriedade original (nome) a uma nova variável (cliente)."
+            },
+            {
+                "text": "Uma função de cálculo de desconto deve aceitar qualquer quantidade de preços. Qual sintaxe usa *Rest Parameters* adequadamente?",
+                "options": [
+                    "function calcular(...precos) {}",
+                    "function calcular([precos]) {}",
+                    "function calcular(precos...) {}",
+                    "function calcular(args) {}"
+                ],
+                "correctAnswer": 0,
+                "explanation": "O *Rest Parameter* (`...precos`) na declaração da função agrupa todos os argumentos recebidos num array chamado `precos`."
+            },
+            {
+                "text": "Analise o código: `const config = { tema: 'dark', fonte: 16 }; const novaConfig = { ...config, tema: 'light' };`. Qual o valor de `novaConfig.tema`?",
+                "options": [
+                    "dark",
+                    "light",
+                    "undefined",
+                    "Erro de sintaxe"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Ao espalhar propriedades de um objeto e depois declarar uma chave que já existe (`tema: 'light'`), o novo valor sobrescreve o antigo. É uma técnica comum para atualizações imutáveis no React e Redux."
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "title": "Programação Assíncrona: Callbacks e Promises",
+        "description": "Entendendo o Event Loop, callbacks e como a linguagem lida com o tempo.",
+        "icon": "bi-hourglass-split",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "O que caracteriza uma função Callback em JavaScript?",
+                "options": [
+                    "Uma função que é chamada pelo sistema operacional.",
+                    "Uma função que sempre executa operações assíncronas.",
+                    "Uma função passada como argumento para outra função, para ser executada mais tarde.",
+                    "Uma função que retorna outra função."
+                ],
+                "correctAnswer": 2,
+                "explanation": "Callbacks são valores. Passamos funções como parâmetros para que, após a conclusão de uma tarefa (ex: um click ou fetch), essa função seja executada."
+            },
+            {
+                "text": "Para evitar o aninhamento excessivo conhecido como 'Callback Hell', o ES6 introduziu qual estrutura para lidar com operações assíncronas?",
+                "options": [
+                    "Generators",
+                    "SetTimeout()",
+                    "Promises",
+                    "Event Loop"
+                ],
+                "correctAnswer": 2,
+                "explanation": "As *Promises* oferecem uma sintaxe muito mais limpa (`.then().catch()`) em substituição às pirâmides de callbacks aninhados."
+            },
+            {
+                "text": "Qual método de uma Promise é executado EXCLUSIVAMENTE se a operação falhar (status 'rejected')?",
+                "options": [
+                    ".then()",
+                    ".catch()",
+                    ".finally()",
+                    ".resolve()"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O método `.catch()` captura os erros. O `.then()` lida com o sucesso, e o `.finally()` executa sempre, independente do resultado."
+            },
+            {
+                "text": "Num sistema de Delivery, você precisa buscar o CEP, o estoque e a cotação do dólar ao mesmo tempo, sem que um espere o outro. Qual ferramenta usar?",
+                "options": [
+                    "await fetch()",
+                    "Promise.all()",
+                    "setTimeout()",
+                    "Promise.race()"
+                ],
+                "correctAnswer": 1,
+                "explanation": "`Promise.all()` aceita um array de Promises e executa todas de forma concorrente (paralela), retornando um array de resultados assim que todas forem concluídas com sucesso."
+            },
+            {
+                "text": "Preveja a ordem de saída no Console: `console.log('1'); setTimeout(() => console.log('2'), 0); Promise.resolve().then(() => console.log('3'));`",
+                "options": [
+                    "1, 2, 3",
+                    "1, 3, 2",
+                    "2, 3, 1",
+                    "3, 2, 1"
+                ],
+                "correctAnswer": 1,
+                "explanation": "O JS executa a *Call Stack* síncrona primeiro ('1'). Depois, ele processa a *Microtask Queue* (Promises, que exibem '3'). Só então ele vai para a *Macrotask Queue* (setTimeout, exibindo '2'), mesmo com o tempo zerado."
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "title": "Manipulação Avançada de Objetos",
+        "description": "Iterando e manipulando dicionários complexos com métodos estáticos.",
+        "icon": "bi-braces",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual método nativo retorna um array contendo todas as CHAVES de um objeto?",
+                "options": [
+                    "Object.keys()",
+                    "Object.values()",
+                    "Object.entries()",
+                    "Object.props()"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Por exemplo, `Object.keys({ nome: 'Ana', idade: 20 })` retorna `['nome', 'idade']`."
+            },
+            {
+                "text": "Se você precisa iterar sobre um objeto para obter tanto a chave quanto o valor, qual método fornece um array de arrays (`[[chave, valor]]`)?",
+                "options": [
+                    "Object.map()",
+                    "Object.entries()",
+                    "Object.pair()",
+                    "Object.values()"
+                ],
+                "correctAnswer": 1,
+                "explanation": "`Object.entries()` é perfeito para usar num laço `for...of` ou transformar objetos num formato iterável, ex: `[['nome', 'Ana'], ['idade', 20]]`."
+            },
+            {
+                "text": "O que o método `Object.assign()` faz?",
+                "options": [
+                    "Verifica se dois objetos são estritamente iguais.",
+                    "Copia os valores de propriedades enumeráveis de um ou mais objetos origem para um objeto destino.",
+                    "Apaga as chaves selecionadas.",
+                    "Congela o objeto, impedindo alterações."
+                ],
+                "correctAnswer": 1,
+                "explanation": "`Object.assign({}, objOriginal)` era a forma clássica de copiar objetos antes do surgimento da sintaxe Spread (`{...objOriginal}`)."
+            },
+            {
+                "text": "Na gestão de inventário, você tem as chaves dos produtos e quer verificar quantos itens estão cadastrados. Como usar o Objeto para contar?",
+                "options": [
+                    "estoque.length",
+                    "Object.keys(estoque).length",
+                    "Object.size(estoque)",
+                    "estoque.count"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Ao contrário de Arrays, Objetos não possuem propriedade `.length`. Primeiro convertemos as chaves num Array com `Object.keys()`, e então usamos o `.length` do Array."
+            },
+            {
+                "text": "Ao fazer `const a = { x: 1 }; const b = a; b.x = 2; console.log(a.x);`, por que o resultado é 2 e não 1?",
+                "options": [
+                    "Porque o JavaScript sempre atualiza a última variável declarada.",
+                    "Porque objetos são passados por REFERÊNCIA. `a` e `b` apontam para o mesmo local na memória.",
+                    "Porque usamos `const` ao invés de `let`.",
+                    "Porque não usamos Object.assign()."
+                ],
+                "correctAnswer": 1,
+                "explanation": "Isto é crucial! Atribuir um objeto a outra variável apenas copia o \"endereço\" da memória. Modificar um afetará o outro."
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "title": "Estruturas Especiais: Map e Set",
+        "description": "Compreendendo estruturas de dados eficientes para casos de uso específicos.",
+        "icon": "bi-collection",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual é a principal característica de uma estrutura `Set` em JavaScript?",
+                "options": [
+                    "Ela ordena os elementos alfabeticamente.",
+                    "Ela armazena apenas valores únicos (não aceita duplicatas).",
+                    "Ela funciona exatamente como um objeto, mas com índices numéricos.",
+                    "Ela converte automaticamente strings em números."
+                ],
+                "correctAnswer": 1,
+                "explanation": "O `Set` é ideal para remover duplicatas. Se você tentar adicionar um valor que já existe num Set, ele o ignorará."
+            },
+            {
+                "text": "Como você verifica rapidamente se o número `42` está dentro de um conjunto `Set` criado anteriormente?",
+                "options": [
+                    "meuSet.includes(42)",
+                    "meuSet.has(42)",
+                    "meuSet.find(42)",
+                    "meuSet.contains(42)"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A estrutura `Set` usa o método estático `.has()` para verificação rápida, que é muito mais performático que o `.includes()` de um Array."
+            },
+            {
+                "text": "Diferente dos Objetos literais (`{}`), qual é o principal benefício do objeto `Map`?",
+                "options": [
+                    "Ele gasta menos memória do navegador.",
+                    "Suas chaves podem ser de qualquer tipo (incluindo funções ou objetos), enquanto em Objetos as chaves são sempre Strings ou Symbols.",
+                    "Ele itera mais rápido que o forEach.",
+                    "Ele salva automaticamente no LocalStorage."
+                ],
+                "correctAnswer": 1,
+                "explanation": "No `Map`, você pode associar dados a uma chave que é uma tag HTML, um array, ou qualquer outra instância em memória, oferecendo imensa flexibilidade."
+            },
+            {
+                "text": "Você recebeu um array de IPs de visitantes: `['192', '192', '168']`. Como gerar um array limpo apenas com acessos únicos rapidamente?",
+                "options": [
+                    "Array.from(new Set(ips))",
+                    "ips.unique()",
+                    "ips.filter(Boolean)",
+                    "new Map(ips)"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Essa é a manobra clássica! O `new Set(ips)` remove as duplicatas automaticamente. Depois, o `Array.from()` converte esse Set de volta para um Array iterável."
+            },
+            {
+                "text": "Num jogo, você gerencia o inventário com `Map`. Para limpar o inventário e resetar tudo, qual método você chama?",
+                "options": [
+                    "inventario = {};",
+                    "inventario.clear()",
+                    "inventario.delete()",
+                    "inventario.reset()"
+                ],
+                "correctAnswer": 1,
+                "explanation": "As estruturas modernas `Map` e `Set` possuem o método nativo `.clear()`, que esvazia completamente a coleção de forma eficiente."
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "title": "Fetch API Avançada: CRUD",
+        "description": "Comunicação completa com Back-end utilizando GET, POST, PUT e DELETE.",
+        "icon": "bi-server",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual método HTTP a função `fetch()` utiliza por padrão se você não definir nenhuma configuração extra?",
+                "options": [
+                    "POST",
+                    "GET",
+                    "PUT",
+                    "DELETE"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Por padrão, um simples `fetch('url')` realiza um GET, que é usado exclusivamente para buscar dados."
+            },
+            {
+                "text": "Para enviar dados de um novo pedido para o servidor (POST), em qual parâmetro do `fetch` você anexa o objeto em formato JSON?",
+                "options": [
+                    "No `body` do objeto de configuração.",
+                    "No cabeçalho `headers`.",
+                    "Na própria URL, após um ponto de interrogação `?`.",
+                    "No parâmetro `payload`."
+                ],
+                "correctAnswer": 0,
+                "explanation": "Enviamos o payload (os dados reais, como `JSON.stringify(pedido)`) dentro da propriedade `body` do objeto de opções do fetch."
+            },
+            {
+                "text": "O servidor espera um JSON, mas não está conseguindo ler a requisição. Qual configuração de `headers` está faltando no seu fetch POST?",
+                "options": [
+                    "{ 'Content-Type': 'application/json' }",
+                    "{ 'Response-Type': 'json' }",
+                    "{ 'Accept': 'text/html' }",
+                    "{ 'Data-Type': 'application/json' }"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Informar o cabeçalho `Content-Type` é essencial. Isso avisa ao back-end qual formato de dados ele está recebendo no corpo da requisição."
+            },
+            {
+                "text": "Na arquitetura REST, se você deseja ATUALIZAR as informações de um usuário existente na API, qual método HTTP é o mais apropriado?",
+                "options": [
+                    "GET",
+                    "POST",
+                    "PUT (ou PATCH)",
+                    "UPDATE"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Na convenção REST, `POST` cria novos registros, enquanto `PUT` substitui o registro inteiro e `PATCH` atualiza apenas partes dele."
+            },
+            {
+                "text": "O fetch retornou status 404. Analisando o código: `const resposta = await fetch(url); if(!resposta.ok) throw new Error('Falha');`, o que avalia a propriedade `ok`?",
+                "options": [
+                    "Se a Promise resolveu com sucesso (código HTTP na faixa de 200 a 299).",
+                    "Se a resposta da API contém formato JSON válido.",
+                    "Se a rede do usuário está online.",
+                    "Se o banco de dados salvou os dados com segurança."
+                ],
+                "correctAnswer": 0,
+                "explanation": "Atenção: o `fetch` só rejeita a Promise (caindo no catch) se a rede cair completamente. Para erros 400 ou 500, a Promise resolve com `resposta.ok` como false. É papel do desenvolvedor verificar essa propriedade."
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "title": "This e Contextos (Call, Apply, Bind)",
+        "description": "Dominando a referência dinâmica da palavra-chave This e Arrow Functions.",
+        "icon": "bi-magnet",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "O que a palavra-chave `this` representa numa função tradicional (Function Declaration)?",
+                "options": [
+                    "Sempre representa o objeto global (Window).",
+                    "Representa a própria função.",
+                    "Representa o objeto ou contexto que chamou (executou) a função.",
+                    "Sempre retorna undefined."
+                ],
+                "correctAnswer": 2,
+                "explanation": "Em funções normais, o `this` é dinâmico. Ele assume a forma de quem o invocou (ex: num evento, ele pode representar o botão clicado; num objeto, ele representa o próprio objeto)."
+            },
+            {
+                "text": "Qual é o principal comportamento do `this` dentro de uma Arrow Function `() => {}`?",
+                "options": [
+                    "Ele captura (herda) o `this` do contexto onde a função foi criada (escopo léxico).",
+                    "Ele remapeia o `this` para o Window.",
+                    "Ele não permite o uso do `this`.",
+                    "Ele é forçado para undefined no Strict Mode."
+                ],
+                "correctAnswer": 0,
+                "explanation": "As Arrow Functions não têm o seu próprio `this`. Elas preservam o valor do contexto envolvente. Por isso são ótimas para callbacks e métodos de array."
+            },
+            {
+                "text": "Você tem a função solta `function ola() { console.log(this.nome); }` e um objeto `const pessoa = { nome: 'João' }`. Como executar a função forçando o `this` para o objeto pessoa?",
+                "options": [
+                    "ola.bind(pessoa)",
+                    "ola(pessoa)",
+                    "ola.call(pessoa)",
+                    "ola.apply[pessoa]"
+                ],
+                "correctAnswer": 2,
+                "explanation": "O método estático `.call()` executa a função imediatamente, substituindo temporariamente o contexto `this` pelo objeto passado no argumento."
+            },
+            {
+                "text": "Qual a principal diferença entre os métodos `.call()` e `.bind()`?",
+                "options": [
+                    "Não há diferença, são apelidos para a mesma ação.",
+                    "O `.call()` executa a função na hora, enquanto o `.bind()` retorna uma NOVA função amarrada àquele contexto, para ser executada depois.",
+                    "O `.bind()` não suporta objetos como parâmetros.",
+                    "O `.call()` só funciona em Arrow Functions."
+                ],
+                "correctAnswer": 1,
+                "explanation": "O `.bind()` (amarrar) é muito útil em bibliotecas modernas (como no construtor do React clássico) para garantir que um callback não perca a referência do seu escopo de origem ao ser acionado via evento."
+            },
+            {
+                "text": "Análise: `const loja = { imposto: 1.1, calcular(valor) { setTimeout(function() { console.log(valor * this.imposto); }, 100); } }; loja.calcular(10);`. O que acontece e qual a solução correta?",
+                "options": [
+                    "Retorna 11, o código está correto.",
+                    "Retorna NaN porque o setTimeout muda o this. Solução: trocar a função do setTimeout por uma Arrow Function.",
+                    "Retorna erro de sintaxe.",
+                    "Retorna 10, o imposto foi ignorado."
+                ],
+                "correctAnswer": 1,
+                "explanation": "A função tradicional (anônima) dentro do `setTimeout` perde o contato com o objeto `loja` e o seu `this` aponta para `Window` (onde não há 'imposto'). Mudar para Arrow Function fará ela herdar o contexto do método `calcular`, resolvendo o bug."
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "title": "Projeto Final: Arquitetura de Kanban Board",
+        "description": "Desafio Integrador envolvendo DOM, LocalStorage, Array Methods, Destructuring e Eventos Drag-and-Drop.",
+        "icon": "bi-kanban",
+        "isMiniProject": true,
+        "questions": [
+            {
+                "text": "Para iniciar a renderização das colunas 'Pendente' e 'Feito', o quadro (board) recuperou do LocalStorage o array `const tasks = [{ id: 1, type: 'todo' }, { id: 2, type: 'done' }]`. Qual estrutura separa as tarefas de forma elegante em novas variáveis?",
+                "options": [
+                    "const todos = tasks.filter(t => t.type === 'todo'); const dones = tasks.filter(t => t.type === 'done');",
+                    "const [todos, dones] = tasks.map(t => t.type);",
+                    "const { todos, dones } = tasks.reduce();",
+                    "tasks.split('todo', 'done');"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Embora o `reduce` possa agrupar, a abordagem declarativa de usar dois filtros é a mais legível. A separação lógica é essencial antes da injeção do HTML no DOM."
+            },
+            {
+                "text": "No Drag and Drop nativo (arrastar e soltar cartões), quando o usuário larga um cartão em cima da coluna 'Feito', qual evento do DOM a coluna-alvo precisa escutar para realizar a ação de salvar a mudança?",
+                "options": [
+                    "dragstart",
+                    "dragenter",
+                    "drop",
+                    "mouseleave"
+                ],
+                "correctAnswer": 2,
+                "explanation": "O evento `drop` é disparado no alvo (coluna) assim que soltamos o botão do rato. Antes, a coluna precisou ouvir o evento `dragover` e disparar o `preventDefault()` para permitir o soltar."
+            },
+            {
+                "text": "O utilizador moveu o cartão id=2 para a coluna 'Feito'. Você precisa atualizar o estado no array de memória. Qual código realiza a substituição limpa antes de salvar?",
+                "options": [
+                    "const temp = tasks.find(t => t.id === 2); temp.type = 'done';",
+                    "const atualizado = tasks.map(t => t.id === 2 ? { ...t, type: 'done' } : t);",
+                    "tasks[2].type = 'done';",
+                    "tasks.replace(2, 'done');"
+                ],
+                "correctAnswer": 1,
+                "explanation": "A abordagem baseada em imutabilidade (ideal no mercado atual com React/Redux) usa o `.map()` para retornar um NOVO array de tarefas. Ele espalha as propriedades antigas (`...t`) e só sobrescreve o tipo caso seja o id correto."
+            },
+            {
+                "text": "Antes de renderizar uma tarefa complexa no cardápio de tarefas, você usa `const { titulo, autor = 'Anônimo' } = tarefa;`. O que o operador de igual faz nesse destructuring de objeto?",
+                "options": [
+                    "Impede a extração se não for encontrado.",
+                    "Atribui o valor padrão 'Anônimo' caso a propriedade 'autor' não exista ou seja undefined no objeto da tarefa.",
+                    "Soma a string Anônimo ao título.",
+                    "Cria uma chave extra no LocalStorage."
+                ],
+                "correctAnswer": 1,
+                "explanation": "Esse é o uso de 'Default Values' em destructuring, garantindo segurança na UI para propriedades faltantes sem a necessidade de um operador `||` adicional."
+            },
+            {
+                "text": "Se o seu código for exportado modularmente (`export class Kanban`), qual deve ser a estratégia para inicializar toda a aplicação de forma síncrona com os eventos já embutidos no HTML?",
+                "options": [
+                    "Ligar o `init()` num `<script defer type=\"module\">`, instanciando `new Kanban()` logo após a carga do script.",
+                    "Colocar o `<script>` no meio das tags `<div>`.",
+                    "Utilizar o `document.write`.",
+                    "Fazer loop num setInterval procurando se o body carregou."
+                ],
+                "correctAnswer": 0,
+                "explanation": "Quando importamos ES Modules usando `type=\"module\"`, o script automaticamente aguarda o parse do HTML (comportamento defer), garantindo que os nós do DOM já existem quando a classe tenta invocar os seus seletores."
+            }
+        ]
     }
 ]
